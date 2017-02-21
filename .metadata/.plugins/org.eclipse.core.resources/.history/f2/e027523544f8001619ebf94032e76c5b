@@ -1,0 +1,17 @@
+package main;
+
+public class crackerApplication
+{
+
+	ArrayList cipherText = new ArrayList();
+
+	public crackerApplication() 
+	{
+		
+	}
+
+	public void readInDictionary()
+	{
+
+	}
+}

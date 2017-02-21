@@ -1,0 +1,11 @@
+package main;
+
+public class runApplication
+{
+
+	public static void main(String[] args)
+	{
+		CrackerApplication app = new CrackerApplication();
+	}
+
+}

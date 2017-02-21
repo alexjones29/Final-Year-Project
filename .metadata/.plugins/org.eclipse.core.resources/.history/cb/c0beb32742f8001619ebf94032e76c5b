@@ -1,0 +1,48 @@
+package main;
+
+public class letter
+{
+
+	private String value;
+	private int frequency;
+	
+	/**
+	 * Gets the letter value.
+	 *
+	 * @return the value
+	 */
+	public String getValue()
+	{
+		return value;
+	}
+
+	/**
+	 * Sets the letter value.
+	 *
+	 * @param value the new value
+	 */
+	public void setValue(String value)
+	{
+		this.value = value;
+	}
+	
+	/**
+	 * Gets the frequency of the letter in the english letter.
+	 *
+	 * @return the frequency
+	 */
+	public int getFrequency()
+	{
+		return frequency;
+	}
+	
+	/**
+	 * Sets the frequency of the letter in the english language.
+	 *
+	 * @param frequency the new frequency
+	 */
+	public void setFrequency(int frequency)
+	{
+		this.frequency = frequency;
+	}
+}

@@ -1,0 +1,8 @@
+package main;
+
+public class letter
+{
+
+	private String value;
+	private int frequency;
+}

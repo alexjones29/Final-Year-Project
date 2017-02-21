@@ -1,0 +1,28 @@
+package main;
+
+public class cipherSymbol
+{
+	private String plaintextValue;
+	private int frequency;
+	
+	public String getPlaintextValue()
+	{
+		return plaintextValue;
+	}
+
+	public void setPlaintextValue(String plaintextValue)
+	{
+		this.plaintextValue = plaintextValue;
+	}
+	
+	public int getFrequency()
+	{
+		return frequency;
+	}
+	
+	public void setFrequency(int frequency)
+	{
+		this.frequency = frequency;
+	}
+
+}

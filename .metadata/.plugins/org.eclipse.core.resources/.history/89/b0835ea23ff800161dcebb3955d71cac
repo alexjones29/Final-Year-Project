@@ -1,0 +1,8 @@
+package main;
+
+public class cipherSymbol
+{
+	private String plaintextValue;
+	private int frequency;
+
+}

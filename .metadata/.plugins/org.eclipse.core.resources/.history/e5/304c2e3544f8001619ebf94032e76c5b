@@ -1,0 +1,10 @@
+package main;
+
+public class crackerApplication {
+
+	public crackerApplication() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

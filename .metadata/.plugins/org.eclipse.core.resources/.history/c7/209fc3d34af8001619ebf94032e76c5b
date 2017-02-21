@@ -1,0 +1,15 @@
+package main;
+
+import java.util.List;
+
+public class CiphertextReader
+{
+
+	
+	public List readInCipherText()
+	{
+		
+		return null;
+		
+	}
+}

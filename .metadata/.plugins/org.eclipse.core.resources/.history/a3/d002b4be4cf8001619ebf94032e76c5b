@@ -1,0 +1,23 @@
+package main;
+
+import java.util.List;
+
+/**
+ * The Class CiphertextReader.
+ */
+public class CiphertextReader
+{
+
+	
+	/**
+	 * Read in cipher text and store in an arraylist to return to the main application.
+	 *
+	 * @return the list
+	 */
+	public List readInCipherText()
+	{
+		
+		return null;
+		
+	}
+}

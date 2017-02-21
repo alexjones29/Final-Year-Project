@@ -1,0 +1,20 @@
+package main;
+
+import java.util.List;
+
+public class CiphertextReader
+{
+
+	
+	/**
+	 * Read in cipher text.
+	 *
+	 * @return the list
+	 */
+	public List readInCipherText()
+	{
+		
+		return null;
+		
+	}
+}

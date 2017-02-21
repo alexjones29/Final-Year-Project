@@ -2,3 +2,4 @@
 1487688245454	Rename type 'cipherSymbol'
 1487688329423	Rename type 'crackerApplication'
 1487688339132	Rename type 'runApplication'
+1487693609137	Extract constant '_1024'

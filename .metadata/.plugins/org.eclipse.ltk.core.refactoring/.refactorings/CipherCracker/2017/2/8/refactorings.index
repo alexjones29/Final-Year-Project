@@ -3,3 +3,5 @@
 1487688329423	Rename type 'crackerApplication'
 1487688339132	Rename type 'runApplication'
 1487693609137	Extract constant '_1024'
+1487783524214	Rename field 'plaintextValue'
+1487783533567	Rename field 'symbolValue'

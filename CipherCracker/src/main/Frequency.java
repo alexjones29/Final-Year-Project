@@ -1,0 +1,13 @@
+package main;
+
+import java.util.List;
+
+public class Frequency
+{
+
+	public void calculateSymbolFrequency(List<CipherSymbol> ciphertext)
+	{
+			
+		
+	}
+}

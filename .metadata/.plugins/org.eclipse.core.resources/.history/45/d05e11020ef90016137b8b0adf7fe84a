@@ -1,0 +1,49 @@
+package main;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CrackerApplication
+{
+
+	List cipherText = new ArrayList<CipherSymbol>();
+
+	public CrackerApplication() 
+	{
+		
+	}
+	
+	public void readInCiphertext()
+	{
+		CiphertextReader cipherReader = new CiphertextReader();
+		File cipher = new File("resources/340cipherascii.txt");
+		cipherText = cipherReader.readInCipherText(cipher);
+		
+	}
+	
+	public void testTrie()
+	{
+		Trie trie = new Trie();
+		trie.insert("table");
+		trie.insert("word");
+		trie.insert("an");
+		trie.insert("ant");
+		trie.insert("anchor");
+		trie.insert("tear");
+		trie.insert("try");
+		trie.insert("rude");
+		trie.insert("boy");
+		trie.insert("sound");
+		trie.insert("sorted");
+		trie.insert("bed");
+		
+		
+		
+	}
+
+	public void readInDictionary()
+	{
+
+	}
+}

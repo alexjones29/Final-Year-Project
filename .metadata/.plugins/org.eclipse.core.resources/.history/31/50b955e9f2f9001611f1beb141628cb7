@@ -1,0 +1,31 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Test;
+
+import main.CipherSymbol;
+
+public class FrequencyTest
+{
+	List<CipherSymbol> ciphertext = new ArrayList<CipherSymbol>();
+	
+	public void setup()
+	{
+		
+		
+	}
+
+	@Test
+	public void test()
+	{
+		fail("Not yet implemented");
+	}
+	
+	
+
+}

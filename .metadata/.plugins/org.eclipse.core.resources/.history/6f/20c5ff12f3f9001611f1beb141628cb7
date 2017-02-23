@@ -1,0 +1,34 @@
+package test;
+
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import main.CipherSymbol;
+
+public class FrequencyTest
+{
+	List<CipherSymbol> ciphertext = new ArrayList<CipherSymbol>();
+	
+	public void setup()
+	{
+	  CipherSymbol symbol1 = new CipherSymbol("a");
+	  CipherSymbol symbol2 = new CipherSymbol("a");
+	  CipherSymbol symbol3 = new CipherSymbol("a");
+	  CipherSymbol symbol4 = new CipherSymbol("a");
+	  
+		
+	}
+
+	@Test
+	public void test()
+	{
+		fail("Not yet implemented");
+	}
+	
+	
+
+}

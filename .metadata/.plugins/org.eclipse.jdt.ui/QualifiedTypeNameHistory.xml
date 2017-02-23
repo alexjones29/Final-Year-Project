@@ -8,4 +8,5 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="main.CipherSymbol"/>
+<fullyQualifiedTypeName name="test.FrequencyTest"/>
 </qualifiedTypeNameHistroy>

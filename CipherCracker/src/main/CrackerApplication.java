@@ -14,16 +14,24 @@ public class CrackerApplication
 
 	List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 	Set<String> dictionary = new HashSet<String>();
+	private CiphertextReader cipherReader;
 
-	public CrackerApplication() {
+	public CrackerApplication()
+	{
 
 	}
-
-	public void readInCiphertext()
+	
+	public void runApplication()
 	{
-		CiphertextReader cipherReader = new CiphertextReader();
-		File cipher = new File("resources/340cipherascii.txt");
-		cipherText = cipherReader.readInCipherText(cipher);
+		cipherReader = new CiphertextReader();
+		File cipherFile = new File("resources/340cipherascii.txt");
+		readInCiphertext(cipherFile);
+	}
+
+	public void readInCiphertext(File cipherFile)
+	{
+
+		cipherText = cipherReader.readInCipherText(cipherFile);
 		readInDictionary();
 		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(cipherText);

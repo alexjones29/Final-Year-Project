@@ -7,7 +7,7 @@ public class CipherSymbol
 {
 	private char symbolvalue;
 	private String plaintextvalue;
-	private int frequency;
+	private double percentagefrequency;
 
 	/**
 	 * Instantiates a new cipher symbol with the ascii value.
@@ -79,9 +79,9 @@ public class CipherSymbol
 	 *
 	 * @return the frequency
 	 */
-	public int getFrequency()
+	public double getFrequency()
 	{
-		return frequency;
+		return percentagefrequency;
 	}
 
 	/**
@@ -90,9 +90,9 @@ public class CipherSymbol
 	 * @param frequency
 	 *            the new frequency
 	 */
-	public void setFrequency(int frequency)
+	public void setFrequency(double frequency)
 	{
-		this.frequency = frequency;
+		this.percentagefrequency = frequency;
 	}
 
 }

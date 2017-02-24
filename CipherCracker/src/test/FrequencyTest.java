@@ -20,7 +20,8 @@ public class FrequencyTest
 	CipherSymbol symbol6;
 	CipherSymbol symbol7;
 	CipherSymbol symbol8;
-
+	double total;
+	
 	private void givenThereAreCipherSymbols()
 	{
 		symbol1 = new CipherSymbol('a');
@@ -40,7 +41,7 @@ public class FrequencyTest
 		ciphertext.add(symbol6);
 		ciphertext.add(symbol7);
 		ciphertext.add(symbol8);
-
+		total = 6;
 	}
 
 	private void whenCalculateSymbolFrequencyIsCalledWithAListOfSymbols()
@@ -51,14 +52,14 @@ public class FrequencyTest
 
 	private void thenTheFrequenciesAreSet()
 	{
-		assertEquals(2,symbol1.getFrequency());
-		assertEquals(2,symbol2.getFrequency());
-		assertEquals(1,symbol3.getFrequency());
-		assertEquals(2,symbol4.getFrequency());
-		assertEquals(1,symbol5.getFrequency());
-		assertEquals(1,symbol6.getFrequency());
-		assertEquals(1,symbol7.getFrequency());
-		assertEquals(2,symbol8.getFrequency());
+		assertEquals((2*100/total),symbol1.getFrequency(), 0);
+		assertEquals((2*100/total),symbol2.getFrequency(), 0);
+		assertEquals((1*100/total),symbol3.getFrequency(), 0);
+		assertEquals((2*100/total),symbol4.getFrequency(), 0);
+		assertEquals((1*100/total),symbol5.getFrequency(), 0);
+		assertEquals((1*100/total),symbol6.getFrequency(), 0);
+		assertEquals((1*100/total),symbol7.getFrequency(), 0);
+		assertEquals((2*100/total),symbol8.getFrequency(), 0);
 	}
 
 	@Test

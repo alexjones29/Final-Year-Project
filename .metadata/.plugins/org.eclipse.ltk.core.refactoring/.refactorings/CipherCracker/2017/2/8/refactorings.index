@@ -6,3 +6,11 @@
 1487783524214	Rename field 'plaintextValue'
 1487783533567	Rename field 'symbolValue'
 1487872222867	Delete element
+1487953245369	Delete element
+1487953364130	Convert local variable 'cipherReader' to field
+1487953375231	Convert local variable 'cipher' to field
+1487953534400	Rename field 'cipher'
+1487953662808	Convert local variable 'cipherReader' to field
+1487956441109	Convert local variable 'app' to field
+1487956960050	Convert local variable 'cipherText' to field
+1487959204207	Rename field 'frequency'

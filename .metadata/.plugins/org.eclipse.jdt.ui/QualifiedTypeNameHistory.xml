@@ -7,6 +7,11 @@
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="main.CipherSymbol"/>
 <fullyQualifiedTypeName name="test.FrequencyTest"/>
+<fullyQualifiedTypeName name="test.CiphertextReaderTest"/>
+<fullyQualifiedTypeName name="org.mockito.Mock"/>
+<fullyQualifiedTypeName name="main.CipherSymbol"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="org.mockito.junit.MockitoJUnitRunner"/>
+<fullyQualifiedTypeName name="org.mockito.Mockito"/>
 </qualifiedTypeNameHistroy>

@@ -13,6 +13,7 @@ public class CrackerApplication
 {
 
 	List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
+	List<Letter> letters = new ArrayList<Letter>();
 	Set<String> dictionary = new HashSet<String>();
 	private CiphertextReader cipherReader;
 
@@ -25,7 +26,14 @@ public class CrackerApplication
 	{
 		cipherReader = new CiphertextReader();
 		File cipherFile = new File("resources/340cipherascii.txt");
+		readInLettersAndFrequencies();
 		readInCiphertext(cipherFile);
+	}
+	
+	public void readInLettersAndFrequencies()
+	{
+	   LetterReader letterReader = new LetterReader();
+	   letters = letterReader.readInLetterFile();
 	}
 
 	public void readInCiphertext(File cipherFile)
@@ -35,7 +43,6 @@ public class CrackerApplication
 		readInDictionary();
 		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(cipherText);
-		
 	}
 
 	public void search(String input, Set<String> dictionary, Stack<String> words, List<List<String>> results)

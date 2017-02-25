@@ -7,18 +7,19 @@ public class Letter
 {
 
 	/** The value. */
-	private String value;
+	private char value;
 	
 	/** The frequency. */
-	private int frequency;
+	private double frequency;
 	
 	/**
 	 * Instantiates a new letter.
 	 *
 	 * @param value the value
 	 */
-	public Letter(String value) {
+	public Letter(char value, double frequency) {
 		this.value = value;
+		this.frequency = frequency;
 	}
 
 	/**
@@ -26,7 +27,7 @@ public class Letter
 	 *
 	 * @return the value
 	 */
-	public String getValue()
+	public char getValue()
 	{
 		return value;
 	}
@@ -37,7 +38,7 @@ public class Letter
 	 *
 	 * @param value the new value
 	 */
-	public void setValue(String value)
+	public void setValue(char value)
 	{
 		this.value = value;
 	}
@@ -47,7 +48,7 @@ public class Letter
 	 *
 	 * @return the frequency
 	 */
-	public int getFrequency()
+	public double getFrequency()
 	{
 		return frequency;
 	}
@@ -57,7 +58,7 @@ public class Letter
 	 *
 	 * @param frequency the new frequency
 	 */
-	public void setFrequency(int frequency)
+	public void setFrequency(double frequency)
 	{
 		this.frequency = frequency;
 	}

@@ -7,14 +7,26 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Class LetterReader.
+ */
 public class LetterReader
 {
 
+	/**
+	 * Instantiates a new letter reader.
+	 */
 	public LetterReader()
 	{
 
 	}
 
+	/**
+	 * Read in letter file containing letter value and frequency as a percentage,
+	 * creates the object and adds it to the list to be returned.
+	 *
+	 * @return the list of letter objects
+	 */
 	public List<Letter> readInLetterFile()
 	{
 		List<Letter> letters = new ArrayList<Letter>();

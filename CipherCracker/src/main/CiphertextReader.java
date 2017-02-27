@@ -25,7 +25,7 @@ public class CiphertextReader
 	 *
 	 * @return the list
 	 */
-	public List readInCipherText(File file)
+	public List<CipherSymbol> readInCipherText(File file)
 	{
 		ArrayList<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 
@@ -39,7 +39,6 @@ public class CiphertextReader
 				char ch = (char) r;
 			    CipherSymbol symbol = new CipherSymbol(ch);
 			    cipherText.add(symbol);
-				System.out.println(symbol.getSymbolValue());
 			}
 		} catch (FileNotFoundException e)
 		{

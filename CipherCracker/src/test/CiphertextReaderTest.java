@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package test;
 
 import static org.mockito.Mockito.times;
@@ -12,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import main.CipherSymbol;
@@ -20,6 +22,9 @@ import main.CiphertextReader;
 import main.CrackerApplication;
 import main.Frequency;
 
+/**
+ * The Class CiphertextReaderTest.
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class CiphertextReaderTest
 {
@@ -32,6 +37,9 @@ public class CiphertextReaderTest
 	private File testFile;
 	private List<CipherSymbol> cipherText;
 	
+	/**
+	 * Given there is A file.
+	 */
 	private void givenThereIsAFile()
 	{
 		testFile = new File("resources/340cipherascii.txt");
@@ -45,16 +53,27 @@ public class CiphertextReaderTest
 		when(cipherReader.readInCipherText(testFile)).thenReturn(cipherText);
 	}
 
+	/**
+	 * When read in cipher text is called.
+	 *
+	 * @param testFile the test file
+	 */
 	private void whenReadInCipherTextIsCalled(File testFile)
 	{
-		app.readInCiphertext(testFile);
+		app.readInCiphertextAndDictionary(testFile);
 	}
 	
+	/**
+	 * Then the cipher text is read in.
+	 */
 	private void thenTheCipherTextIsReadIn()
 	{
 		verify(cipherReader, times(1)).readInCipherText(testFile);
 	}
 
+	/**
+	 * Test cipher reader is called correctly.
+	 */
 	@Test
 	public void testCipherReaderIsCalled()
 	{

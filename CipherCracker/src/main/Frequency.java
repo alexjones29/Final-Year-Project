@@ -6,11 +6,17 @@ import java.util.Map;
 
 public class Frequency
 {
-	public Frequency()
-	{
-		
+	public Frequency() {
+
 	}
 
+	/**
+	 * Calculate symbol frequency of the ciphertext and assigns it to each
+	 * symbol object.
+	 *
+	 * @param ciphertext
+	 *            the ciphertext to examine
+	 */
 	public void calculateSymbolFrequency(List<CipherSymbol> ciphertext)
 	{
 		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
@@ -33,9 +39,9 @@ public class Frequency
 		{
 			for (CipherSymbol cipher : ciphertext)
 			{
-				if (cipher.getSymbolValue()==entry.getKey())
+				if (cipher.getSymbolValue() == entry.getKey())
 				{
-					double value = ((entry.getValue()*100)/total);
+					double value = ((entry.getValue() * 100) / total);
 					cipher.setFrequency(value);
 				}
 			}

@@ -1,7 +1,0 @@
-package main;
-
-public class letter
-{
-
-	private int frequency;
-}

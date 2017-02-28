@@ -19,6 +19,7 @@ public class CrackerApplication
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private Trie trie;
+	private InitialKey initialKey = new InitialKey();
 	/**
 	 * Instantiates a new cracker application.
 	 */
@@ -38,7 +39,12 @@ public class CrackerApplication
 		readInLettersAndFrequencies();
 		readInCiphertextAndDictionary(cipherFile);
 		calculateFrequency();
-		testSearch();
+		cipherText = initialKey.createInitialKey(cipherText, letters);
+		for (CipherSymbol sym : cipherText)
+		{
+			System.out.println(sym.getPlaintextValue());
+		}
+//		testSearch();
 	}
 	
 	private void testSearch()

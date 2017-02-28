@@ -15,5 +15,10 @@
 <fullyQualifiedTypeName name="org.mockito.Mockito"/>
 <fullyQualifiedTypeName name="java.io.DataInputStream"/>
 <fullyQualifiedTypeName name="main.Letter"/>
+<fullyQualifiedTypeName name="main.DictionaryHandler"/>
+<fullyQualifiedTypeName name="main.CrackerApplication"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="main.Trie"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="main.HillClimber"/>
 </qualifiedTypeNameHistroy>

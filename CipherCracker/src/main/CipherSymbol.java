@@ -6,7 +6,7 @@ package main;
 public class CipherSymbol
 {
 	private char symbolvalue;
-	private String plaintextvalue;
+	private char plaintextvalue = 0;
 	private double percentagefrequency;
 
 	/**
@@ -28,7 +28,7 @@ public class CipherSymbol
 	 * @param plaintextValue
 	 *            the plaintext value
 	 */
-	public CipherSymbol(String symbolValue, String plaintextValue) {
+	public CipherSymbol(String symbolValue, char plaintextValue) {
 		this.plaintextvalue = plaintextValue;
 	}
 
@@ -58,7 +58,7 @@ public class CipherSymbol
 	 *
 	 * @return the plaintext value
 	 */
-	public String getPlaintextValue()
+	public char getPlaintextValue()
 	{
 		return plaintextvalue;
 	}
@@ -69,7 +69,7 @@ public class CipherSymbol
 	 * @param plaintextValue
 	 *            the new plaintext value
 	 */
-	public void setPlaintextValue(String plaintextValue)
+	public void setPlaintextValue(char plaintextValue)
 	{
 		this.plaintextvalue = plaintextValue;
 	}

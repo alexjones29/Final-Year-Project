@@ -8,12 +8,7 @@ public class HillClimber
 		
 	}
 	
-	public void createInitialKey()
-	{
-		
-	}
-	
-	public void conductClimb()
+	public void startClimb()
 	{
 		
 	}

@@ -21,4 +21,5 @@
 <fullyQualifiedTypeName name="main.Trie"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="main.HillClimber"/>
+<fullyQualifiedTypeName name="main.ScoreHandler"/>
 </qualifiedTypeNameHistroy>

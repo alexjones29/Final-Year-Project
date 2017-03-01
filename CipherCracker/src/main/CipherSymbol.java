@@ -8,6 +8,17 @@ public class CipherSymbol
 	private char symbolvalue;
 	private char plaintextvalue = 0;
 	private double percentagefrequency;
+	private int bestScore = 0;
+	
+	public int getBestScore()
+	{
+		return bestScore;
+	}
+
+	public void setBestScore(int bestScore)
+	{
+		this.bestScore = bestScore;
+	}
 
 	/**
 	 * Instantiates a new cipher symbol with the ascii value.

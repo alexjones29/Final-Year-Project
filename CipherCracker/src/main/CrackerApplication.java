@@ -2,10 +2,8 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * The Class CrackerApplication.
@@ -13,9 +11,9 @@ import java.util.Set;
 public class CrackerApplication
 {
 
-	List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
-	List<Letter> letters = new ArrayList<Letter>();
-	Set<String> dictionaryWords = new HashSet<String>();
+	private List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
+	private List<Letter> letters = new ArrayList<Letter>();
+	// private Set<String> dictionaryWords = new HashSet<String>();
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private Trie trie;
@@ -33,10 +31,8 @@ public class CrackerApplication
 	 */
 	public void runApplication()
 	{
-		trie = new Trie(false);
-		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/encryptedpassage.txt");
-		readInLettersAndFrequencies();
+		File cipherFile = initialiseObjects();
+		letters = readInLettersAndFrequencies();
 		readInCiphertextAndDictionary(cipherFile);
 		calculateFrequency();
 		cipherText = initialKey.createInitialKey(cipherText, letters);
@@ -44,8 +40,19 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
+	}
 
-		// testSearch();
+	/**
+	 * Initialise objects.
+	 *
+	 * @return the file
+	 */
+	private File initialiseObjects()
+	{
+		trie = new Trie(false);
+		cipherReader = new CiphertextReader();
+		File cipherFile = new File("resources/encryptedpassage.txt");
+		return cipherFile;
 	}
 
 	private void testSearch()
@@ -63,11 +70,12 @@ public class CrackerApplication
 
 	/**
 	 * Read in letters and frequencies.
+	 * @return a list of letters
 	 */
-	public void readInLettersAndFrequencies()
+	public List<Letter> readInLettersAndFrequencies()
 	{
 		LetterReader letterReader = new LetterReader();
-		letters = letterReader.readInLetterFile();
+		return letterReader.readInLetterFile();
 	}
 
 	/**
@@ -79,55 +87,55 @@ public class CrackerApplication
 	public void readInCiphertextAndDictionary(File cipherFile)
 	{
 		cipherText = cipherReader.readInCipherText(cipherFile);
-		// dictionary.readInDictionary(dictionaryWords);
 		trie = dictionary.readInDictionary(trie);
 	}
 
+	/**
+	 * This method performs the basic hill climbing
+	 */
 	public void hillClimb()
 	{
 		char twoCharsPrev = 0;
 		char previous = 0;
 		ScoreHandler scorer = new ScoreHandler();
-		
-		for (int i=0;i<cipherText.size();i++)
+
+		for (int i = 0; i < cipherText.size(); i++)
 		{
 			char currentBestLetter = cipherText.get(i).getPlaintextValue();
 			int currentBestScore = cipherText.get(i).getBestScore();
 			int currentScore = 0;
 			char globalBestLetter = cipherText.get(i).getPlaintextValue();
 			int globalBestScore = cipherText.get(i).getPlaintextValue();
-			
+
 			for (Letter letter : letters)
 			{
-				if(twoCharsPrev!=0)
+				if (twoCharsPrev != 0)
 				{
 					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue());
-					
-				}
-				else if (previous!=0 && twoCharsPrev==0)
+
+				} else if (previous != 0 && twoCharsPrev == 0)
 				{
 					currentScore = scorer.calculateScore(previous, letter.getValue());
-				}
-				else 
+				} else
 				{
 					currentScore = scorer.calculateScore(letter.getValue());
 				}
-				
+
 				if (currentScore > currentBestScore)
 				{
 					currentBestScore = currentScore;
 					currentBestLetter = letter.getValue();
 				}
 			}
-			
-			if (currentIsBest(currentBestScore,cipherText.get(i).getBestScore()))
+
+			if (currentIsBest(currentBestScore, cipherText.get(i).getBestScore()))
 			{
 				cipherText.get(i).setBestScore(currentBestScore);
 				cipherText.get(i).setPlaintextValue(currentBestLetter);
 				globalBestLetter = currentBestLetter;
 				globalBestScore = currentBestScore;
 			}
-			
+
 			for (CipherSymbol sym : cipherText)
 			{
 				if (sym.getSymbolValue() == cipherText.get(i).getSymbolValue())
@@ -139,14 +147,21 @@ public class CrackerApplication
 					}
 				}
 			}
-			
+
 			setSameSymbols(i, globalBestLetter, globalBestScore);
-			
+
 			twoCharsPrev = previous;
 			previous = globalBestLetter;
 		}
 	}
 
+	/**
+	 * Sets the same symbols to have the global best score and letter.
+	 *
+	 * @param i the i
+	 * @param globalBestLetter the global best letter
+	 * @param globalBestScore the global best score
+	 */
 	private void setSameSymbols(int i, char globalBestLetter, int globalBestScore)
 	{
 		for (CipherSymbol sym : cipherText)
@@ -159,6 +174,16 @@ public class CrackerApplication
 		}
 	}
 
+	/**
+	 * Returns true if the first number passed in(the current one) is greater
+	 * than the second one, or if the bestScore is 0.
+	 *
+	 * @param current
+	 *            the current
+	 * @param bestScore
+	 *            the best score
+	 * @return true, if successful
+	 */
 	private boolean currentIsBest(int current, int bestScore)
 	{
 		if (current > bestScore || bestScore == 0)

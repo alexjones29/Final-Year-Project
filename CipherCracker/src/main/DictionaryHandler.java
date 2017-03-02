@@ -63,6 +63,7 @@ public class DictionaryHandler
 		{
 			e.printStackTrace();
 		}
+		System.out.println(trie.size());
 		return trie;
 	}
 	

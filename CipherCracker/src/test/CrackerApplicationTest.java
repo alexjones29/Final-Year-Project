@@ -26,7 +26,7 @@ import main.CrackerApplication;
 import main.DictionaryHandler;
 import main.Frequency;
 import main.Letter;
-import main.LetterReader;
+import main.FrequencyFileReader;
 import main.Trie;
 
 /**
@@ -44,7 +44,7 @@ public class CrackerApplicationTest
 	@Mock
 	private DictionaryHandler diction;
 	@Mock 
-	private LetterReader letterReader;
+	private FrequencyFileReader letterReader;
 	private File testFile;
 	private List<CipherSymbol> cipherText;
 	private List<Letter> letters;

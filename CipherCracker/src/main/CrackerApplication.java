@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +19,8 @@ public class CrackerApplication
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private Trie trie;
 	private InitialKey initialKey = new InitialKey();
+	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
+	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 
 	/**
 	 * Instantiates a new cracker application.
@@ -74,7 +77,11 @@ public class CrackerApplication
 	 */
 	public List<Letter> readInLettersAndFrequencies()
 	{
-		LetterReader letterReader = new LetterReader();
+		FrequencyFileReader letterReader = new FrequencyFileReader();
+		File bigramFile = new File("resources/bigramfrequencies.txt");
+		bigrams = letterReader.readInNGramFiles(bigramFile);
+		File trigramFile = new File("resources/trigramfrequencies.txt");
+		trigrams = letterReader.readInNGramFiles(trigramFile);
 		return letterReader.readInLetterFile();
 	}
 

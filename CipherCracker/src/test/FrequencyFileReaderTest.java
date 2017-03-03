@@ -7,17 +7,17 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import main.Letter;
-import main.LetterReader;
+import main.FrequencyFileReader;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class LetterReaderTest.
  */
-public class LetterReaderTest
+public class FrequencyFileReaderTest
 {
 	
 	List<Letter> letters = new ArrayList<Letter>();
-	LetterReader reader = new LetterReader();
+	FrequencyFileReader reader = new FrequencyFileReader();
 	
 	/**
 	 * When the readInLetterFile method is called.

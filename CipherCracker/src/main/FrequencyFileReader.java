@@ -2,21 +2,24 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Class LetterReader.
  */
-public class LetterReader
+public class FrequencyFileReader
 {
 
 	/**
 	 * Instantiates a new letter reader.
 	 */
-	public LetterReader()
+	public FrequencyFileReader()
 	{
 
 	}
@@ -51,6 +54,31 @@ public class LetterReader
 		}
 		return letters;
 
+	}
+	
+	public HashMap<String, Double> readInNGramFiles(File file)
+	{
+		HashMap<String, Double> nGram = new HashMap<String, Double>();
+		try
+		{
+			FileInputStream fstream = new FileInputStream(file.getPath());
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine;
+			while ((strLine = br.readLine()) != null)
+			{
+				String[] tokens = strLine.split(" : ");
+				String value = tokens[0];
+				double freq = Double.parseDouble(tokens[1]);
+				nGram.put(value, freq);
+			}
+			in.close();
+		} catch (Exception e)
+		{
+			System.err.println("Error: " + e.getMessage());
+		}
+		return nGram;
+		
 	}
 
 }

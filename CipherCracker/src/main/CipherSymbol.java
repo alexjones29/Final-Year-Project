@@ -8,14 +8,24 @@ public class CipherSymbol
 	private char symbolvalue;
 	private char plaintextvalue = 0;
 	private double percentagefrequency;
-	private int bestScore = 0;
+	private double bestScore = 0;
 	
-	public int getBestScore()
+	/**
+	 * Gets the best score.
+	 *
+	 * @return the best score
+	 */
+	public double getBestScore()
 	{
 		return bestScore;
 	}
 
-	public void setBestScore(int bestScore)
+	/**
+	 * Sets the best score.
+	 *
+	 * @param bestScore the new best score
+	 */
+	public void setBestScore(double bestScore)
 	{
 		this.bestScore = bestScore;
 	}

@@ -7,21 +7,22 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="test.FrequencyTest"/>
-<fullyQualifiedTypeName name="test.CiphertextReaderTest"/>
 <fullyQualifiedTypeName name="org.mockito.Mock"/>
 <fullyQualifiedTypeName name="main.CipherSymbol"/>
 <fullyQualifiedTypeName name="org.mockito.junit.MockitoJUnitRunner"/>
 <fullyQualifiedTypeName name="org.mockito.Mockito"/>
 <fullyQualifiedTypeName name="java.io.DataInputStream"/>
-<fullyQualifiedTypeName name="main.CrackerApplication"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="main.HillClimber"/>
 <fullyQualifiedTypeName name="main.ScoreHandler"/>
 <fullyQualifiedTypeName name="main.DictionaryHandler"/>
 <fullyQualifiedTypeName name="main.Trie"/>
 <fullyQualifiedTypeName name="org.junit.Before"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="main.Letter"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="main.CrackerApplication"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.RootPaneUI"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="test.CiphertextReaderTest"/>
 </qualifiedTypeNameHistroy>

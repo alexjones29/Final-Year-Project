@@ -39,10 +39,11 @@ public class CrackerApplication
 		readInCiphertextAndDictionary(cipherFile);
 		calculateFrequency();
 		cipherText = initialKey.createInitialKey(cipherText, letters);
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getPlaintextValue());
-		}
+//		for (CipherSymbol sym : cipherText)
+//		{
+//			System.out.println(sym.getPlaintextValue());
+//		}
+		hillClimb();
 	}
 
 	/**
@@ -73,6 +74,7 @@ public class CrackerApplication
 
 	/**
 	 * Read in letters and frequencies.
+	 * 
 	 * @return a list of letters
 	 */
 	public List<Letter> readInLettersAndFrequencies()
@@ -98,7 +100,7 @@ public class CrackerApplication
 	}
 
 	/**
-	 * This method performs the basic hill climbing
+	 * This method performs the basic hill climbing.
 	 */
 	public void hillClimb()
 	{
@@ -108,24 +110,22 @@ public class CrackerApplication
 
 		for (int i = 0; i < cipherText.size(); i++)
 		{
-			char currentBestLetter = cipherText.get(i).getPlaintextValue();
-			int currentBestScore = cipherText.get(i).getBestScore();
-			int currentScore = 0;
+			char currentBestLetter = 0;
+			double currentBestScore = 0;
+			double currentScore = 0;
 			char globalBestLetter = cipherText.get(i).getPlaintextValue();
-			int globalBestScore = cipherText.get(i).getPlaintextValue();
+			double globalBestScore = cipherText.get(i).getBestScore();
 
 			for (Letter letter : letters)
 			{
 				if (twoCharsPrev != 0)
 				{
-					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue());
+					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue(), bigrams, trigrams,
+							trie);
 
 				} else if (previous != 0 && twoCharsPrev == 0)
 				{
-					currentScore = scorer.calculateScore(previous, letter.getValue());
-				} else
-				{
-					currentScore = scorer.calculateScore(letter.getValue());
+					currentScore = scorer.calculateScore(previous, letter.getValue(), bigrams, trie);
 				}
 
 				if (currentScore > currentBestScore)
@@ -137,11 +137,25 @@ public class CrackerApplication
 
 			if (currentIsBest(currentBestScore, cipherText.get(i).getBestScore()))
 			{
-				cipherText.get(i).setBestScore(currentBestScore);
-				cipherText.get(i).setPlaintextValue(currentBestLetter);
 				globalBestLetter = currentBestLetter;
 				globalBestScore = currentBestScore;
 			}
+
+			if (globalBestScore == 0)
+			{
+				double[] weight = new double[26];
+
+				for (int pos = 0; pos < letters.size(); pos++)
+				{
+					double temp = letters.get(pos).getFrequency();
+					weight[pos] = temp;
+				}
+				int position = initialKey.rouletteSelect(weight);
+				globalBestLetter = letters.get(position).getValue();
+			}
+
+			cipherText.get(i).setBestScore(globalBestScore);
+			cipherText.get(i).setPlaintextValue(globalBestLetter);
 
 			for (CipherSymbol sym : cipherText)
 			{
@@ -160,20 +174,29 @@ public class CrackerApplication
 			twoCharsPrev = previous;
 			previous = globalBestLetter;
 		}
+		System.out.println("round 2");
+
+		for (CipherSymbol sym : cipherText)
+		{
+			System.out.println(sym.getPlaintextValue());
+		}
 	}
 
 	/**
 	 * Sets the same symbols to have the global best score and letter.
 	 *
-	 * @param i the i
-	 * @param globalBestLetter the global best letter
-	 * @param globalBestScore the global best score
+	 * @param position
+	 *            the position
+	 * @param globalBestLetter
+	 *            the global best letter
+	 * @param globalBestScore
+	 *            the global best score
 	 */
-	private void setSameSymbols(int i, char globalBestLetter, int globalBestScore)
+	private void setSameSymbols(int position, char globalBestLetter, double globalBestScore)
 	{
 		for (CipherSymbol sym : cipherText)
 		{
-			if (sym.getSymbolValue() == cipherText.get(i).getSymbolValue())
+			if (sym.getSymbolValue() == cipherText.get(position).getSymbolValue())
 			{
 				sym.setBestScore(globalBestScore);
 				sym.setPlaintextValue(globalBestLetter);
@@ -191,7 +214,7 @@ public class CrackerApplication
 	 *            the best score
 	 * @return true, if successful
 	 */
-	private boolean currentIsBest(int current, int bestScore)
+	private boolean currentIsBest(double current, double bestScore)
 	{
 		if (current > bestScore || bestScore == 0)
 		{

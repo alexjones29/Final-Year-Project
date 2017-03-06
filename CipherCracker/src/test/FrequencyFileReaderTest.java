@@ -9,7 +9,6 @@ import org.junit.Test;
 import main.Letter;
 import main.FrequencyFileReader;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LetterReaderTest.
  */

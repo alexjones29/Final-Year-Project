@@ -16,9 +16,7 @@ import java.util.List;
  */
 public class CiphertextReader
 {
-
-	private static final int BUFFER_SIZE = 1024;
-
+                                       
 	/**
 	 * Read in cipher text and store in an arraylist to return to the main
 	 * application.

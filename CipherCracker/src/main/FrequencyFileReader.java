@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The Class LetterReader.
@@ -56,6 +55,12 @@ public class FrequencyFileReader
 
 	}
 	
+	/**
+	 * Reads in the NGram files to a hashmap.
+	 *
+	 * @param file the file
+	 * @return the hash map
+	 */
 	public HashMap<String, Double> readInNGramFiles(File file)
 	{
 		HashMap<String, Double> nGram = new HashMap<String, Double>();

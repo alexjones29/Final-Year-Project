@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -118,20 +119,23 @@ public class CrackerApplication
 
 			for (Letter letter : letters)
 			{
-				if (twoCharsPrev != 0)
-				{
-					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue(), bigrams, trigrams,
-							trie);
-
-				} else if (previous != 0 && twoCharsPrev == 0)
-				{
-					currentScore = scorer.calculateScore(previous, letter.getValue(), bigrams, trie);
-				}
+				ArrayList<Character> previousCharacters = new ArrayList<Character>();
+				previousCharacters = previousLetters(cipherText, i);
+				currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie);
+//				if (twoCharsPrev != 0)
+//				{
+//					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue(), bigrams, trigrams,
+//							trie);
+//
+//				} else if (previous != 0 && twoCharsPrev == 0)
+//				{
+//					currentScore = scorer.calculateScore(previous, letter.getValue(), bigrams, trie);
+//				}
 
 				if (currentScore > currentBestScore)
 				{
 					currentBestScore = currentScore;
-					currentBestLetter = letter.getValue();
+					currentBestLetter = letter.getValue(); 
 				}
 			}
 
@@ -180,6 +184,27 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
+	}
+	
+	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position)
+	{
+		// Position need to be -1????? to ignore the current letter we are trying to find?
+		ArrayList<Character> characters = new ArrayList<Character>();
+		for (int counter = position; counter >=0; counter--)
+		{
+			if (characters.size() >= 6 || !symbols.get(counter).isInWord())
+			{
+				break;
+			}
+			else 
+			{
+				characters.add(symbols.get(counter).getPlaintextValue());
+			}
+			
+		}
+		Collections.reverse(characters);
+		return characters;
+		
 	}
 
 	/**

@@ -9,6 +9,7 @@ public class CipherSymbol
 	private char plaintextvalue = 0;
 	private double percentagefrequency;
 	private double bestScore = 0;
+	private boolean inWord = false;
 	
 	/**
 	 * Gets the best score.
@@ -114,6 +115,16 @@ public class CipherSymbol
 	public void setFrequency(double frequency)
 	{
 		this.percentagefrequency = frequency;
+	}
+
+	public boolean isInWord()
+	{
+		return inWord;
+	}
+
+	public void setInWord(boolean inWord)
+	{
+		this.inWord = inWord;
 	}
 
 }

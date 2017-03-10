@@ -85,7 +85,7 @@ public class CrackerApplicationTest
 	 */
 	private void whenReadInCipherTextIsCalled(File testFile)
 	{
-		app.readInCiphertextAndDictionary(testFile);
+		app.readInCiphertextAndDictionary(testFile, cipherText);
 	}
 	
 	/**

@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="java.io.DataInputStream"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="main.HillClimber"/>
-<fullyQualifiedTypeName name="main.ScoreHandler"/>
 <fullyQualifiedTypeName name="main.DictionaryHandler"/>
 <fullyQualifiedTypeName name="main.Trie"/>
 <fullyQualifiedTypeName name="org.junit.Before"/>
@@ -27,4 +26,5 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="main.ScoreHandler"/>
 </qualifiedTypeNameHistroy>

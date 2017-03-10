@@ -13,9 +13,8 @@ import java.util.Scanner;
 public class CrackerApplication
 {
 
-	private List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
+	
 	private List<Letter> letters = new ArrayList<Letter>();
-	// private Set<String> dictionaryWords = new HashSet<String>();
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private Trie trie;
@@ -35,16 +34,19 @@ public class CrackerApplication
 	 */
 	public void runApplication()
 	{
+		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 		File cipherFile = initialiseObjects();
 		letters = readInLettersAndFrequencies();
-		readInCiphertextAndDictionary(cipherFile);
-		calculateFrequency();
+		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
+		cipherText = calculateFrequency(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters);
-//		for (CipherSymbol sym : cipherText)
-//		{
-//			System.out.println(sym.getPlaintextValue());
-//		}
-		hillClimb();
+		for (CipherSymbol sym : cipherText)
+		{
+			System.out.println(sym.getPlaintextValue());
+		}
+		
+		hillClimb(cipherText);
+		testSearch();
 	}
 
 	/**
@@ -71,6 +73,7 @@ public class CrackerApplication
 		{
 			System.out.println("match found:" + input);
 		}
+		System.out.println("match not found");
 	}
 
 	/**
@@ -94,19 +97,18 @@ public class CrackerApplication
 	 * @param cipherFile
 	 *            the cipher file
 	 */
-	public void readInCiphertextAndDictionary(File cipherFile)
+	public List<CipherSymbol> readInCiphertextAndDictionary(File cipherFile,List<CipherSymbol> cipherText)
 	{
 		cipherText = cipherReader.readInCipherText(cipherFile);
 		trie = dictionary.readInDictionary(trie);
+		return cipherText;
 	}
 
 	/**
 	 * This method performs the basic hill climbing.
 	 */
-	public void hillClimb()
+	public void hillClimb(List<CipherSymbol> cipherText)
 	{
-		char twoCharsPrev = 0;
-		char previous = 0;
 		ScoreHandler scorer = new ScoreHandler();
 
 		for (int i = 0; i < cipherText.size(); i++)
@@ -121,18 +123,13 @@ public class CrackerApplication
 			{
 				ArrayList<Character> previousCharacters = new ArrayList<Character>();
 				previousCharacters = previousLetters(cipherText, i);
+				if (previousCharacters.size()==0)
+				{
+					break;
+				}
 				currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie);
-//				if (twoCharsPrev != 0)
-//				{
-//					currentScore = scorer.calculateScore(twoCharsPrev, previous, letter.getValue(), bigrams, trigrams,
-//							trie);
-//
-//				} else if (previous != 0 && twoCharsPrev == 0)
-//				{
-//					currentScore = scorer.calculateScore(previous, letter.getValue(), bigrams, trie);
-//				}
 
-				if (currentScore > currentBestScore)
+				if (currentScore >= currentBestScore)
 				{
 					currentBestScore = currentScore;
 					currentBestLetter = letter.getValue(); 
@@ -173,10 +170,7 @@ public class CrackerApplication
 				}
 			}
 
-			setSameSymbols(i, globalBestLetter, globalBestScore);
-
-			twoCharsPrev = previous;
-			previous = globalBestLetter;
+			cipherText = setSameSymbols(i, globalBestLetter, globalBestScore, cipherText);
 		}
 		System.out.println("round 2");
 
@@ -184,15 +178,19 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
+		
+//		hillClimb(cipherText);
+		
 	}
 	
 	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position)
 	{
 		// Position need to be -1????? to ignore the current letter we are trying to find?
 		ArrayList<Character> characters = new ArrayList<Character>();
+		position--;
 		for (int counter = position; counter >=0; counter--)
 		{
-			if (characters.size() >= 6 || !symbols.get(counter).isInWord())
+			if (characters.size() >= 6 || symbols.get(counter).isInWord())
 			{
 				break;
 			}
@@ -216,8 +214,9 @@ public class CrackerApplication
 	 *            the global best letter
 	 * @param globalBestScore
 	 *            the global best score
+	 * @return 
 	 */
-	private void setSameSymbols(int position, char globalBestLetter, double globalBestScore)
+	private List<CipherSymbol> setSameSymbols(int position, char globalBestLetter, double globalBestScore, List<CipherSymbol> cipherText)
 	{
 		for (CipherSymbol sym : cipherText)
 		{
@@ -227,6 +226,8 @@ public class CrackerApplication
 				sym.setPlaintextValue(globalBestLetter);
 			}
 		}
+		
+		return cipherText;
 	}
 
 	/**
@@ -250,11 +251,13 @@ public class CrackerApplication
 
 	/**
 	 * Calculates the symbol frequency of the cipher text.
+	 * @return 
 	 */
-	private void calculateFrequency()
+	private List<CipherSymbol> calculateFrequency(List<CipherSymbol> cipherText)
 	{
 		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(cipherText);
+		return cipherText;
 	}
 
 }

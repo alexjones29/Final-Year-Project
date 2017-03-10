@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,84 +26,36 @@ public class ScoreHandler
 		return 0;
 	}
 
-	/**
-	 * Calculates the score if there is using bigram.
-	 *
-	 * @param previous
-	 *            the previous
-	 * @param value
-	 *            the value
-	 * @param bigrams
-	 * @param trie
-	 * @return the double
-	 */
-	public double calculateScore(char previous, char value, HashMap<String, Double> bigrams, Trie trie)
-	{
-		String input = new StringBuilder().append(previous).append(value).toString();
-		double score = mapSearch(bigrams, input);
-		// score = trieSearch(trie, input, score);
-
-		return score;
-
-	}
-
-	/**
-	 * Calculates the score if there is using bigram and trigram.
-	 *
-	 * @param twoCharsPrev
-	 *            the two chars prev
-	 * @param previous
-	 *            the previous
-	 * @param value
-	 *            the value
-	 * @param trigrams
-	 * @param bigrams
-	 * @param trie
-	 * @return the double
-	 */
-	public double calculateScore(char twoCharsPrev, char previous, char value, HashMap<String, Double> bigrams,
-			HashMap<String, Double> trigrams, Trie trie)
-	{
-
-		String bigramInput = new StringBuilder().append(previous).append(value).toString();
-		String trigramInput = new StringBuilder().append(twoCharsPrev).append(previous).append(value).toString();
-		double score = mapSearch(bigrams, bigramInput);
-		// do this call from cracker app instead, after calculate score
-		// score += trieSearch(trie, bigramInput, score);
-		// score += trieSearch(trie, trigramInput, score);
-		score += mapSearch(trigrams, trigramInput);
-		return score;
-
-	}
-
-	private double searchBigram(ArrayList<Character> previousCharacters, HashMap<String, Double> bigrams, HashMap<String, Double> trigrams)
-	{
-		double score = 0;
-		
-		return 0;
-	}
 
 	public double calculateScore(char current, ArrayList<Character> previousCharacters, HashMap<String, Double> bigrams,
 			HashMap<String, Double> trigrams, Trie trie)
 	{
 		double score = 0;
+		if (previousCharacters.size() == 0)
+		{
+			return 0;
+		}
 		
-		//format into ifs to account for string sizes and that
-		String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
-		String trigramInput = formatString(previousCharacters, current, 3);
-		String bigramInput = formatString(previousCharacters, current, 2);
+		if (previousCharacters.size()>=2)
+		{
+			String trigramInput = formatString(previousCharacters, current, 2);
+			score += mapSearch(trigrams, trigramInput);
+		}
 		
-		score += trieSearch(trie, wordToFind, score);
-		score += mapSearch(bigrams, bigramInput);
-		score += mapSearch(trigrams, trigramInput);
-		return 0;
+		if (previousCharacters.size()>=1)
+		{
+			String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
+			score += trieSearch(trie, wordToFind, score);
+			String bigramInput = formatString(previousCharacters, current, 1);
+			score += mapSearch(bigrams, bigramInput);
+		}
+		return score;
 	}
 	
 	private String formatString(ArrayList<Character> previousCharacters, char current, int length)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
 		int start = previousCharacters.size() - length;
-		start++;
 		for (int i = start; i<previousCharacters.size();i++)
 		{
 			stringBuilder.append(previousCharacters.get(i));
@@ -132,6 +83,14 @@ public class ScoreHandler
 			score += wordToFind.length();
 		}
 		return score;
+	}
+	
+	private double nearMatch(Trie trie)
+	{
+		
+		
+		
+		return 0;
 	}
 
 	/**

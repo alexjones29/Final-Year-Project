@@ -45,7 +45,7 @@ public class CrackerApplication
 			System.out.println(sym.getPlaintextValue());
 		}
 		
-		hillClimb(cipherText);
+//		hillClimb(cipherText);
 		testSearch();
 	}
 
@@ -69,7 +69,7 @@ public class CrackerApplication
 		String input = scan.next().toLowerCase();
 		System.out.println();
 
-		if (trie.contains(input))
+		if (trie.containsWord(input))
 		{
 			System.out.println("match found:" + input);
 		}
@@ -118,11 +118,11 @@ public class CrackerApplication
 			double currentScore = 0;
 			char globalBestLetter = cipherText.get(i).getPlaintextValue();
 			double globalBestScore = cipherText.get(i).getBestScore();
+			ArrayList<Character> previousCharacters = new ArrayList<Character>();
+			previousCharacters = previousLetters(cipherText, i);
 
 			for (Letter letter : letters)
 			{
-				ArrayList<Character> previousCharacters = new ArrayList<Character>();
-				previousCharacters = previousLetters(cipherText, i);
 				if (previousCharacters.size()==0)
 				{
 					break;

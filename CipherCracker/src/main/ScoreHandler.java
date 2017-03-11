@@ -44,8 +44,8 @@ public class ScoreHandler
 		
 		if (previousCharacters.size()>=1)
 		{
-			String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
-			score += trieSearch(trie, wordToFind, score);
+//			String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
+//			score += trieSearch(trie, wordToFind, score);
 			String bigramInput = formatString(previousCharacters, current, 1);
 			score += mapSearch(bigrams, bigramInput);
 		}
@@ -78,7 +78,7 @@ public class ScoreHandler
 	 */
 	private double trieSearch(Trie trie, String wordToFind, double score)
 	{
-		if (trie.contains(wordToFind))
+		if (trie.containsWord(wordToFind))
 		{
 			score += wordToFind.length();
 		}

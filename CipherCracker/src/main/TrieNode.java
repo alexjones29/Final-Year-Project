@@ -82,6 +82,29 @@ class TrieNode {
 			return n == null ? null : n.lookup(s, pos+1);
 		}
 	}
+	
+	TrieNode lookupWord(String s, int pos) {
+		if (s == null)
+			return null;
+		
+		else if (pos == s.length()-1)
+			//change so if no children then its a word
+			if (children.get(s.charAt(pos)) == null)
+			{
+				//return true
+				TrieNode n = children.get(s.charAt(pos-1));
+				return n;
+			}
+			else
+			{
+				return null;
+				
+			}
+		else {
+			TrieNode n = children.get(s.charAt(pos)); 
+			return n == null ? null : n.lookup(s, pos+1);
+		}
+	}
 
 	// debugging facility
 	private void dump(StringBuilder sb, String prefix) {

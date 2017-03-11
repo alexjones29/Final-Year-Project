@@ -56,6 +56,14 @@ public class Trie {
 			return n == null ? 0 : n.occurances;
 		}
 		
+		public boolean containsWord(String word)
+		{
+			if (word == null)
+				return false;
+			
+			return root.lookupWord(caseSensitive ? word : word.toLowerCase(), 0) != null;			
+		}
+		
 		public boolean contains(String word) {
 			if (word == null)
 				return false;

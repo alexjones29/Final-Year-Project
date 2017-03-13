@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +14,6 @@ import java.util.Scanner;
 public class CrackerApplication
 {
 
-	
 	private List<Letter> letters = new ArrayList<Letter>();
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
@@ -21,6 +21,7 @@ public class CrackerApplication
 	private InitialKey initialKey = new InitialKey();
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
+	private HashSet<String> fullWords = new HashSet<String>();
 
 	/**
 	 * Instantiates a new cracker application.
@@ -44,9 +45,14 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
-		
-//		hillClimb(cipherText);
-		testSearch();
+
+		double score = 0;
+		while (score < 20)
+		{
+			hillClimb(cipherText);
+			score = scoreRunThrough(cipherText);
+		}
+		// testSearch();
 	}
 
 	/**
@@ -97,10 +103,11 @@ public class CrackerApplication
 	 * @param cipherFile
 	 *            the cipher file
 	 */
-	public List<CipherSymbol> readInCiphertextAndDictionary(File cipherFile,List<CipherSymbol> cipherText)
+	public List<CipherSymbol> readInCiphertextAndDictionary(File cipherFile, List<CipherSymbol> cipherText)
 	{
 		cipherText = cipherReader.readInCipherText(cipherFile);
 		trie = dictionary.readInDictionary(trie);
+		fullWords = dictionary.readInDictionary(fullWords);
 		return cipherText;
 	}
 
@@ -123,16 +130,17 @@ public class CrackerApplication
 
 			for (Letter letter : letters)
 			{
-				if (previousCharacters.size()==0)
+				if (previousCharacters.size() == 0)
 				{
 					break;
 				}
-				currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie);
+				currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie,
+						fullWords);
 
 				if (currentScore >= currentBestScore)
 				{
 					currentBestScore = currentScore;
-					currentBestLetter = letter.getValue(); 
+					currentBestLetter = letter.getValue();
 				}
 			}
 
@@ -178,31 +186,29 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
-		
-//		hillClimb(cipherText);
-		
+
 	}
-	
+
 	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position)
 	{
-		// Position need to be -1????? to ignore the current letter we are trying to find?
+		// Position need to be -1????? to ignore the current letter we are
+		// trying to find?
 		ArrayList<Character> characters = new ArrayList<Character>();
 		position--;
-		for (int counter = position; counter >=0; counter--)
+		for (int counter = position; counter >= 0; counter--)
 		{
 			if (characters.size() >= 6 || symbols.get(counter).isInWord())
 			{
 				break;
-			}
-			else 
+			} else
 			{
 				characters.add(symbols.get(counter).getPlaintextValue());
 			}
-			
+
 		}
 		Collections.reverse(characters);
 		return characters;
-		
+
 	}
 
 	/**
@@ -214,9 +220,10 @@ public class CrackerApplication
 	 *            the global best letter
 	 * @param globalBestScore
 	 *            the global best score
-	 * @return 
+	 * @return
 	 */
-	private List<CipherSymbol> setSameSymbols(int position, char globalBestLetter, double globalBestScore, List<CipherSymbol> cipherText)
+	private List<CipherSymbol> setSameSymbols(int position, char globalBestLetter, double globalBestScore,
+			List<CipherSymbol> cipherText)
 	{
 		for (CipherSymbol sym : cipherText)
 		{
@@ -226,7 +233,7 @@ public class CrackerApplication
 				sym.setPlaintextValue(globalBestLetter);
 			}
 		}
-		
+
 		return cipherText;
 	}
 
@@ -251,13 +258,38 @@ public class CrackerApplication
 
 	/**
 	 * Calculates the symbol frequency of the cipher text.
-	 * @return 
+	 * 
+	 * @return
 	 */
 	private List<CipherSymbol> calculateFrequency(List<CipherSymbol> cipherText)
 	{
 		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(cipherText);
 		return cipherText;
+	}
+
+	private double scoreRunThrough(List<CipherSymbol> cipherText)
+	{
+		StringBuilder text = new StringBuilder();
+		double score = 0;
+		for (int i = 0; i < cipherText.size(); i++)
+		{
+			text.append(cipherText.get(i).getPlaintextValue());
+		}
+
+		String fullText = text.toString();
+		for (String diction : fullWords)
+		{
+			if (diction.length() > 2)
+			{
+				if (fullText.contains(diction))
+				{
+					score += diction.length();
+				}
+			}
+		}
+
+		return score;
 	}
 
 }

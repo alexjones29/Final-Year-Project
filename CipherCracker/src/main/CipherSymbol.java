@@ -7,6 +7,7 @@ public class CipherSymbol
 {
 	private char symbolvalue;
 	private char plaintextvalue = 0;
+	private double plaintextFrequency = 0;
 	private double percentagefrequency;
 	private double bestScore = 0;
 	private boolean inWord = false;
@@ -125,6 +126,16 @@ public class CipherSymbol
 	public void setInWord(boolean inWord)
 	{
 		this.inWord = inWord;
+	}
+
+	public double getPlaintextFrequency()
+	{
+		return plaintextFrequency;
+	}
+
+	public void setPlaintextFrequency(double plaintextFrequency)
+	{
+		this.plaintextFrequency = plaintextFrequency;
 	}
 
 }

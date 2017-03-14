@@ -1,12 +1,11 @@
 package main;
 
+import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * The Class ScoreHandler.
@@ -50,7 +49,6 @@ public class ScoreHandler
 
 		if (previousCharacters.size() >= 1)
 		{
-
 			String bigramInput = formatString(previousCharacters, current, 1);
 			score += mapSearch(bigrams, bigramInput);
 		}
@@ -133,6 +131,10 @@ public class ScoreHandler
 					score = substring.length();
 					break;
 				}
+				else if (StringUtils.getLevenshteinDistance(substring, input) <=1)
+				{
+					
+				}
 		}
 		return score;
 	}
@@ -148,7 +150,7 @@ public class ScoreHandler
 	 *            the input
 	 * @return the double
 	 */
-	private double mapSearch(HashMap<String, Double> ngram, String input)
+	public double mapSearch(HashMap<String, Double> ngram, String input)
 	{
 		int multiplier = 2;
 		double score = 0;

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -46,12 +47,38 @@ public class CrackerApplication
 			System.out.println(sym.getPlaintextValue());
 		}
 
-		double score = 0;
-		while (score < 20)
+		int consecutive = 0;
+		double bestScore = scoreRunThrough(cipherText);
+		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
+		while (bestScore < 199)
 		{
-			hillClimb(cipherText);
-			score = scoreRunThrough(cipherText);
+			cipherText = calculatePlaintextFrequency(cipherText);
+			newCipherText = hillClimb(cipherText);
+			double score = scoreRunThrough(newCipherText);
+			
+			if (score > bestScore)
+			{
+				cipherText = newCipherText;
+				bestScore = score;
+				consecutive = 0;
+			}
+			else 
+			{
+				consecutive++;
+				if (consecutive >= 10)
+				{
+					System.out.println("got stuck");
+					//randomRestart
+				}
+			}
+			
 		}
+		for (CipherSymbol sym : cipherText)
+		{
+			System.out.println(sym.getPlaintextValue());
+		}
+		
+		
 		// testSearch();
 	}
 
@@ -114,72 +141,49 @@ public class CrackerApplication
 	/**
 	 * This method performs the basic hill climbing.
 	 */
-	public void hillClimb(List<CipherSymbol> cipherText)
+	public List<CipherSymbol> hillClimb(List<CipherSymbol> cipherText)
 	{
 		ScoreHandler scorer = new ScoreHandler();
+		int randomPosition = getRandomPosition(cipherText);
 
-		for (int i = 0; i < cipherText.size(); i++)
+		char currentBestLetter = 0;
+		double currentBestScore = 0;
+		double currentScore = 0;
+		ArrayList<Character> previousCharacters = new ArrayList<Character>();
+		previousCharacters = previousLetters(cipherText, randomPosition, 6);
+
+		for (Letter letter : letters)
 		{
-			char currentBestLetter = 0;
-			double currentBestScore = 0;
-			double currentScore = 0;
-			char globalBestLetter = cipherText.get(i).getPlaintextValue();
-			double globalBestScore = cipherText.get(i).getBestScore();
-			ArrayList<Character> previousCharacters = new ArrayList<Character>();
-			previousCharacters = previousLetters(cipherText, i);
-
-			for (Letter letter : letters)
+			if (previousCharacters.size() == 0)
 			{
-				if (previousCharacters.size() == 0)
-				{
-					break;
-				}
-				currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie,
-						fullWords);
-
-				if (currentScore >= currentBestScore)
-				{
-					currentBestScore = currentScore;
-					currentBestLetter = letter.getValue();
-				}
+				break;
 			}
+			currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie,
+					fullWords);
 
-			if (currentIsBest(currentBestScore, cipherText.get(i).getBestScore()))
+			if (currentScore >= currentBestScore)
 			{
-				globalBestLetter = currentBestLetter;
-				globalBestScore = currentBestScore;
+				currentBestScore = currentScore;
+				currentBestLetter = letter.getValue();
 			}
-
-			if (globalBestScore == 0)
-			{
-				double[] weight = new double[26];
-
-				for (int pos = 0; pos < letters.size(); pos++)
-				{
-					double temp = letters.get(pos).getFrequency();
-					weight[pos] = temp;
-				}
-				int position = initialKey.rouletteSelect(weight);
-				globalBestLetter = letters.get(position).getValue();
-			}
-
-			cipherText.get(i).setBestScore(globalBestScore);
-			cipherText.get(i).setPlaintextValue(globalBestLetter);
-
-			for (CipherSymbol sym : cipherText)
-			{
-				if (sym.getSymbolValue() == cipherText.get(i).getSymbolValue())
-				{
-					if (!currentIsBest(currentBestScore, sym.getBestScore()))
-					{
-						globalBestScore = sym.getBestScore();
-						globalBestLetter = sym.getPlaintextValue();
-					}
-				}
-			}
-
-			cipherText = setSameSymbols(i, globalBestLetter, globalBestScore, cipherText);
 		}
+
+		if (currentBestScore == 0)
+		{
+			double[] weight = new double[26];
+
+			for (int pos = 0; pos < letters.size(); pos++)
+			{
+				double temp = letters.get(pos).getFrequency();
+				weight[pos] = temp;
+			}
+			int position = initialKey.rouletteSelect(weight);
+			currentBestLetter = letters.get(position).getValue();
+		}
+
+		cipherText.get(randomPosition).setPlaintextValue(currentBestLetter);
+
+		cipherText = setSameSymbols(randomPosition, currentBestLetter, currentBestScore, cipherText);
 		System.out.println("round 2");
 
 		for (CipherSymbol sym : cipherText)
@@ -187,17 +191,24 @@ public class CrackerApplication
 			System.out.println(sym.getPlaintextValue());
 		}
 
+		return cipherText;
+	}
+	
+	private int getRandomPosition(List<CipherSymbol> cipherText)
+	{
+		Random rand = new Random();
+
+		int randomPosition = rand.nextInt(cipherText.size());
+		return randomPosition;
 	}
 
-	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position)
+	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position, int amount)
 	{
-		// Position need to be -1????? to ignore the current letter we are
-		// trying to find?
 		ArrayList<Character> characters = new ArrayList<Character>();
 		position--;
 		for (int counter = position; counter >= 0; counter--)
 		{
-			if (characters.size() >= 6 || symbols.get(counter).isInWord())
+			if (characters.size() >= amount || symbols.get(counter).isInWord())
 			{
 				break;
 			} else
@@ -267,9 +278,22 @@ public class CrackerApplication
 		frequency.calculateSymbolFrequency(cipherText);
 		return cipherText;
 	}
+	
+	/**
+	 * Calculates the symbol frequency of the cipher text.
+	 * 
+	 * @return
+	 */
+	private List<CipherSymbol> calculatePlaintextFrequency(List<CipherSymbol> cipherText)
+	{
+		Frequency frequency = new Frequency();
+		frequency.calculatePlaintextFrequency(cipherText);
+		return cipherText;
+	}
 
 	private double scoreRunThrough(List<CipherSymbol> cipherText)
 	{
+		ScoreHandler scoreHandler = new ScoreHandler();
 		StringBuilder text = new StringBuilder();
 		double score = 0;
 		for (int i = 0; i < cipherText.size(); i++)
@@ -288,7 +312,33 @@ public class CrackerApplication
 				}
 			}
 		}
-
+		
+		HashSet<String> textTrigrams = new HashSet<>();
+		for (int position=2; position< cipherText.size(); position++)
+		{
+			List<Character> chars = previousLetters(cipherText, position, 2);
+			StringBuilder tri = new StringBuilder().append(chars.get(0)).append(chars.get(1)).append(cipherText.get(position).getPlaintextValue());
+			textTrigrams.add(tri.toString());
+		}
+		
+		HashSet<String> textBigrams = new HashSet<>();
+		for (int position = 1; position < cipherText.size(); position++)
+		{
+			List<Character> chars = previousLetters(cipherText, position, 1);
+			StringBuilder bi = new StringBuilder().append(chars.get(0)).append(cipherText.get(position));
+			textBigrams.add(bi.toString());
+		}
+		
+		for (String tris : textTrigrams)
+		{
+			score+=scoreHandler.mapSearch(trigrams, tris);
+		}
+		
+		for (String bis : textBigrams)
+		{
+			score+=scoreHandler.mapSearch(bigrams, bis);
+		}
+		
 		return score;
 	}
 

@@ -82,11 +82,23 @@ public class Frequency
 	public char[] findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
 	{
 		char belowToSwap = '0';
+		double amountAbove = 0;
 		char aboveToSwap = '0';
-	
-		for (CipherSymbol symbol : ciphertext)
+		double amountBelow = 0;
+		
+		for (Letter letter : letters)
 		{
+			for (CipherSymbol symbol : ciphertext)
+			{
+				double freq = 0;
+				if (symbol.getPlaintextValue()==letter.getValue())
+				{
+					freq += symbol.getFrequency();
+				}
+				
+			}
 			
+			if (freq > )
 			
 			
 		}

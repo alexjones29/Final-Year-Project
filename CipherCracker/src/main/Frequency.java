@@ -50,6 +50,7 @@ public class Frequency
 	
 	public void calculatePlaintextFrequency(List<CipherSymbol> ciphertext)
 	{
+		
 		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
 		double total = 0;
 		for (CipherSymbol cipher : ciphertext)
@@ -81,16 +82,16 @@ public class Frequency
 	
 	public char[] findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
 	{
-		char belowToSwap = '0';
-		double amountAbove = 0;
+		char [] toSwap;
 		char aboveToSwap = '0';
+		double amountAbove = 0;
+		char belowToSwap = '0';
 		double amountBelow = 0;
-		
 		for (Letter letter : letters)
 		{
+			double freq = 0;
 			for (CipherSymbol symbol : ciphertext)
 			{
-				double freq = 0;
 				if (symbol.getPlaintextValue()==letter.getValue())
 				{
 					freq += symbol.getFrequency();
@@ -98,10 +99,47 @@ public class Frequency
 				
 			}
 			
-			if (freq > )
+			if ((freq-errorRate) > letter.getFrequency() )
+			{
+				
+				if ((freq-errorRate) > amountAbove)
+				{
+					amountAbove = freq;
+					aboveToSwap = letter.getValue();
+				}
+			}
+			if ((freq+errorRate) < letter.getFrequency() )
+			{
+				
+				if ((freq+errorRate) < amountAbove)
+				{
+					amountBelow = freq;
+					belowToSwap = letter.getValue();
+				}
+			}
+		}
+		
+		if (belowToSwap == '0' && aboveToSwap == '0')
+		{
+			return null;
+		}
+		else if (belowToSwap != '0' && aboveToSwap == '0')
+		{
 			
+			for (CipherSymbol symbol : ciphertext)
+			{
+				
+				double closestFrequency = 0;
+				
+				if (symbol.getPlaintextValue()==belowToSwap)
+				{
+//					if (symbol.getFrequency() )
+				}
+				
+			}
 			
 		}
+		
 		
 		return null;
 		

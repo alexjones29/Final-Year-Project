@@ -46,14 +46,35 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
-
+		Frequency freq = new Frequency();
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
 		while (bestScore < 199)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
-			newCipherText = hillClimb(cipherText);
+			HashMap<Character, Character> toSwap = freq.findSwappableNodes(cipherText, letters, 2);
+			if (toSwap!=null || !toSwap.isEmpty())
+			{
+				newCipherText = cipherText;
+				
+				for (CipherSymbol sym : newCipherText)
+				{
+					if (sym.getSymbolValue()==toSwap.get(0))
+					{
+						sym.setPlaintextValue(toSwap.get(1));
+					}
+					else if (sym.getSymbolValue()==toSwap.get(1))
+					{
+						sym.setPlaintextValue(toSwap.get(0));
+					}
+
+				}
+			}
+			else 
+			{
+				newCipherText = hillClimb(cipherText);
+			}
 			double score = scoreRunThrough(newCipherText);
 			
 			if (score > bestScore)

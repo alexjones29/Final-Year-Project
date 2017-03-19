@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -80,9 +81,9 @@ public class Frequency
 		}
 	}
 	
-	public char[] findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
+	public HashMap<Character,Character> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
 	{
-		char [] toSwap;
+		HashMap<Character, Character> toSwap = new HashMap<>();
 		char aboveToSwap = '0';
 		double amountAbove = 0;
 		char belowToSwap = '0';
@@ -108,7 +109,7 @@ public class Frequency
 					aboveToSwap = letter.getValue();
 				}
 			}
-			if ((freq+errorRate) < letter.getFrequency() )
+			else if ((freq+errorRate) < letter.getFrequency() )
 			{
 				
 				if ((freq+errorRate) < amountAbove)
@@ -119,9 +120,15 @@ public class Frequency
 			}
 		}
 		
+		return findNodes(ciphertext, toSwap, aboveToSwap, belowToSwap);
+	}
+
+	
+	private HashMap<Character,Character> findNodes(List<CipherSymbol> ciphertext, HashMap<Character,Character> toSwap, char aboveToSwap, char belowToSwap)
+	{
 		if (belowToSwap == '0' && aboveToSwap == '0')
 		{
-			return null;
+			return toSwap;
 		}
 		else if (belowToSwap != '0' && aboveToSwap == '0')
 		{
@@ -133,15 +140,43 @@ public class Frequency
 				
 				if (symbol.getPlaintextValue()==belowToSwap)
 				{
+					toSwap.put(symbol.getSymbolValue(), symbol.getPlaintextValue());
 //					if (symbol.getFrequency() )
 				}
-				
 			}
-			
+		}
+		else if (belowToSwap == '0' && aboveToSwap != '0')
+		{
+			for (CipherSymbol symbol : ciphertext)
+			{
+				
+				double closestFrequency = 0;
+				
+				if (symbol.getPlaintextValue()==aboveToSwap)
+				{
+					toSwap.put(symbol.getSymbolValue(), symbol.getPlaintextValue());
+//					if (symbol.getFrequency() )
+				}
+			}
+		}
+		else 
+		{
+			for (CipherSymbol symbol : ciphertext)
+			{
+				double closestFrequency = 0;
+				
+				if (symbol.getPlaintextValue()==belowToSwap)
+				{
+					toSwap.put(symbol.getSymbolValue(), symbol.getPlaintextValue());
+				}
+				else if (symbol.getPlaintextValue()==aboveToSwap)
+				{
+					toSwap.put(symbol.getSymbolValue(), symbol.getPlaintextValue());
+//					if (symbol.getFrequency() )
+				}
+			}
 		}
 		
-		
-		return null;
-		
+		return toSwap;
 	}
 }

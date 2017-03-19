@@ -29,4 +29,5 @@
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="main.ScoreHandler"/>
+<fullyQualifiedTypeName name="main.Frequency"/>
 </qualifiedTypeNameHistroy>

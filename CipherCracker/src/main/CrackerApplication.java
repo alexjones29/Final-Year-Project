@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -44,7 +45,7 @@ public class CrackerApplication
 		cipherText = initialKey.createInitialKey(cipherText, letters);
 		for (CipherSymbol sym : cipherText)
 		{
-			System.out.println(sym.getPlaintextValue());
+			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
 		}
 		Frequency freq = new Frequency();
 		int consecutive = 0;
@@ -53,53 +54,58 @@ public class CrackerApplication
 		while (bestScore < 199)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
-			HashMap<Character, Character> toSwap = freq.findSwappableNodes(cipherText, letters, 2);
-			if (toSwap!=null || !toSwap.isEmpty())
+			LinkedHashMap<Character, Character> toSwap = freq.findSwappableNodes(cipherText, letters, 2);
+			
+			if (toSwap != null)
 			{
+				char firstSwap = (new ArrayList<Character>(toSwap.values())).get(0);
+				char secondSwap = (new ArrayList<Character>(toSwap.values())).get(1);
 				newCipherText = cipherText;
-				
+
 				for (CipherSymbol sym : newCipherText)
 				{
-					if (sym.getSymbolValue()==toSwap.get(0))
+					if (toSwap.containsKey(sym.getSymbolValue()))
 					{
-						sym.setPlaintextValue(toSwap.get(1));
+						if (sym.getPlaintextValue() == firstSwap)
+						{
+							sym.setPlaintextValue(secondSwap);
+						} else if (sym.getSymbolValue() == secondSwap)
+						{
+							sym.setPlaintextValue(firstSwap);
+						}
 					}
-					else if (sym.getSymbolValue()==toSwap.get(1))
-					{
-						sym.setPlaintextValue(toSwap.get(0));
-					}
-
 				}
-			}
-			else 
+			} else
 			{
 				newCipherText = hillClimb(cipherText);
 			}
 			double score = scoreRunThrough(newCipherText);
-			
+
 			if (score > bestScore)
 			{
 				cipherText = newCipherText;
 				bestScore = score;
 				consecutive = 0;
-			}
-			else 
+				for (CipherSymbol sym : cipherText)
+				{
+					System.out.println(sym.getPlaintextValue());
+				}
+			} else
 			{
 				consecutive++;
 				if (consecutive >= 10)
 				{
 					System.out.println("got stuck");
-					//randomRestart
+					// randomRestart
 				}
 			}
-			
+
 		}
 		for (CipherSymbol sym : cipherText)
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
-		
-		
+
 		// testSearch();
 	}
 
@@ -214,7 +220,7 @@ public class CrackerApplication
 
 		return cipherText;
 	}
-	
+
 	private int getRandomPosition(List<CipherSymbol> cipherText)
 	{
 		Random rand = new Random();
@@ -299,7 +305,7 @@ public class CrackerApplication
 		frequency.calculateSymbolFrequency(cipherText);
 		return cipherText;
 	}
-	
+
 	/**
 	 * Calculates the symbol frequency of the cipher text.
 	 * 
@@ -333,15 +339,16 @@ public class CrackerApplication
 				}
 			}
 		}
-		
+
 		HashSet<String> textTrigrams = new HashSet<>();
-		for (int position=2; position< cipherText.size(); position++)
+		for (int position = 2; position < cipherText.size(); position++)
 		{
 			List<Character> chars = previousLetters(cipherText, position, 2);
-			StringBuilder tri = new StringBuilder().append(chars.get(0)).append(chars.get(1)).append(cipherText.get(position).getPlaintextValue());
+			StringBuilder tri = new StringBuilder().append(chars.get(0)).append(chars.get(1))
+					.append(cipherText.get(position).getPlaintextValue());
 			textTrigrams.add(tri.toString());
 		}
-		
+
 		HashSet<String> textBigrams = new HashSet<>();
 		for (int position = 1; position < cipherText.size(); position++)
 		{
@@ -349,17 +356,17 @@ public class CrackerApplication
 			StringBuilder bi = new StringBuilder().append(chars.get(0)).append(cipherText.get(position));
 			textBigrams.add(bi.toString());
 		}
-		
+
 		for (String tris : textTrigrams)
 		{
-			score+=scoreHandler.mapSearch(trigrams, tris);
+			score += scoreHandler.mapSearch(trigrams, tris);
 		}
-		
+
 		for (String bis : textBigrams)
 		{
-			score+=scoreHandler.mapSearch(bigrams, bis);
+			score += scoreHandler.mapSearch(bigrams, bis);
 		}
-		
+
 		return score;
 	}
 

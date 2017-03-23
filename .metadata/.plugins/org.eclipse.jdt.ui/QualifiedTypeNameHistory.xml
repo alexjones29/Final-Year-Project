@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="test.FrequencyTest"/>
 <fullyQualifiedTypeName name="org.mockito.Mock"/>
-<fullyQualifiedTypeName name="main.CipherSymbol"/>
 <fullyQualifiedTypeName name="org.mockito.junit.MockitoJUnitRunner"/>
 <fullyQualifiedTypeName name="org.mockito.Mockito"/>
 <fullyQualifiedTypeName name="java.io.DataInputStream"/>
@@ -30,4 +29,5 @@
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="main.ScoreHandler"/>
 <fullyQualifiedTypeName name="main.Frequency"/>
+<fullyQualifiedTypeName name="main.CipherSymbol"/>
 </qualifiedTypeNameHistroy>

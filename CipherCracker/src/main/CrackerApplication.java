@@ -54,31 +54,14 @@ public class CrackerApplication
 		while (bestScore < 199)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
-			LinkedHashMap<Character, Character> toSwap = freq.findSwappableNodes(cipherText, letters, 2);
+			newCipherText = cipherText;
+			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2);
 			
-			if (toSwap != null)
-			{
-				char firstSwap = (new ArrayList<Character>(toSwap.values())).get(0);
-				char secondSwap = (new ArrayList<Character>(toSwap.values())).get(1);
-				newCipherText = cipherText;
-
-				for (CipherSymbol sym : newCipherText)
-				{
-					if (toSwap.containsKey(sym.getSymbolValue()))
-					{
-						if (sym.getPlaintextValue() == firstSwap)
-						{
-							sym.setPlaintextValue(secondSwap);
-						} else if (sym.getSymbolValue() == secondSwap)
-						{
-							sym.setPlaintextValue(firstSwap);
-						}
-					}
-				}
-			} else
+			if (newCipherText == null || newCipherText.isEmpty())
 			{
 				newCipherText = hillClimb(cipherText);
-			}
+			} 
+			
 			double score = scoreRunThrough(newCipherText);
 
 			if (score > bestScore)
@@ -93,8 +76,10 @@ public class CrackerApplication
 			} else
 			{
 				consecutive++;
-				if (consecutive >= 10)
+				if (consecutive >= 100)
 				{
+					consecutive = 0;
+					cipherText = hillClimb(cipherText);
 					System.out.println("got stuck");
 					// randomRestart
 				}

@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * The Class CrackerApplication.
@@ -47,6 +45,15 @@ public class CrackerApplication
 		{
 			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
 		}
+		cipherText = performHillClimb(cipherText);
+		for (CipherSymbol sym : cipherText)
+		{
+			System.out.println(sym.getPlaintextValue());
+		}
+	}
+
+	private List<CipherSymbol> performHillClimb(List<CipherSymbol> cipherText)
+	{
 		Frequency freq = new Frequency();
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
@@ -63,7 +70,6 @@ public class CrackerApplication
 			} 
 			
 			double score = scoreRunThrough(newCipherText);
-
 			if (score > bestScore)
 			{
 				cipherText = newCipherText;
@@ -76,22 +82,16 @@ public class CrackerApplication
 			} else
 			{
 				consecutive++;
-				if (consecutive >= 100)
+				if (consecutive >= 200)
 				{
 					consecutive = 0;
 					cipherText = hillClimb(cipherText);
-					System.out.println("got stuck");
 					// randomRestart
+					System.out.println("got stuck");
 				}
 			}
-
 		}
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getPlaintextValue());
-		}
-
-		// testSearch();
+		return cipherText;
 	}
 
 	/**
@@ -105,20 +105,6 @@ public class CrackerApplication
 		cipherReader = new CiphertextReader();
 		File cipherFile = new File("resources/encryptedpassage.txt");
 		return cipherFile;
-	}
-
-	private void testSearch()
-	{
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter a string: ");
-		String input = scan.next().toLowerCase();
-		System.out.println();
-
-		if (trie.containsWord(input))
-		{
-			System.out.println("match found:" + input);
-		}
-		System.out.println("match not found");
 	}
 
 	/**
@@ -209,7 +195,6 @@ public class CrackerApplication
 	private int getRandomPosition(List<CipherSymbol> cipherText)
 	{
 		Random rand = new Random();
-
 		int randomPosition = rand.nextInt(cipherText.size());
 		return randomPosition;
 	}

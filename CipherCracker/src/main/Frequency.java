@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Frequency
 {
@@ -20,29 +21,27 @@ public class Frequency
 	 */
 	public void calculateSymbolFrequency(List<CipherSymbol> ciphertext)
 	{
-		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
-		double total = 0;
+		Map<Character, Double> occurences = new HashMap<Character, Double>();
 		for (CipherSymbol cipher : ciphertext)
 		{
 			if (occurences.containsKey(cipher.getSymbolValue()))
 			{
-				int temp = occurences.get(cipher.getSymbolValue());
+				double temp = occurences.get(cipher.getSymbolValue());
 				temp++;
 				occurences.put(cipher.getSymbolValue(), temp);
 			} else
 			{
-				occurences.put(cipher.getSymbolValue(), 1);
-				total++;
+				occurences.put(cipher.getSymbolValue(), 1.0);
 			}
 		}
 
-		for (Map.Entry<Character, Integer> entry : occurences.entrySet())
+		for (Map.Entry<Character, Double> entry : occurences.entrySet())
 		{
 			for (CipherSymbol cipher : ciphertext)
 			{
 				if (cipher.getSymbolValue() == entry.getKey())
 				{
-					double value = ((entry.getValue() * 100) / total);
+					double value = ((entry.getValue() * 100) / ciphertext.size());
 					cipher.setFrequency(value);
 				}
 			}
@@ -52,29 +51,27 @@ public class Frequency
 	public void calculatePlaintextFrequency(List<CipherSymbol> ciphertext)
 	{
 
-		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
-		double total = 0;
+		Map<Character, Double> occurences = new HashMap<Character, Double>();
 		for (CipherSymbol cipher : ciphertext)
 		{
 			if (occurences.containsKey(cipher.getPlaintextValue()))
 			{
-				int temp = occurences.get(cipher.getPlaintextValue());
+				double temp = occurences.get(cipher.getPlaintextValue());
 				temp++;
 				occurences.put(cipher.getPlaintextValue(), temp);
 			} else
 			{
-				occurences.put(cipher.getPlaintextValue(), 1);
-				total++;
+				occurences.put(cipher.getPlaintextValue(), 1.0);
 			}
 		}
 
-		for (Map.Entry<Character, Integer> entry : occurences.entrySet())
+		for (Map.Entry<Character, Double> entry : occurences.entrySet())
 		{
 			for (CipherSymbol cipher : ciphertext)
 			{
 				if (cipher.getPlaintextValue() == entry.getKey())
 				{
-					double value = ((entry.getValue() * 100) / total);
+					double value = ((entry.getValue() * 100) / ciphertext.size());
 					cipher.setPlaintextFrequency(value);
 				}
 			}
@@ -83,68 +80,49 @@ public class Frequency
 
 	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
 	{
-		char aboveToSwap = '0';
-		boolean multipleAbove = false;
-		boolean multipleBelow = false;
-		double amountAbove = 0;
-		char belowToSwap = '0';
-		double amountBelow = 0;
-
-		while (amountAbove == 0 && amountBelow == 0)
+		HashMap<Character, Integer> possibleAbove = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> possibleBelow = new HashMap<Character, Integer>();
+		for (Letter letter : letters)
 		{
-			for (Letter letter : letters)
+			List<Character> multiple = new ArrayList<Character>();
+			double freq = 0;
+			for (CipherSymbol symbol : ciphertext)
 			{
-				List<Character> multiple = new ArrayList<Character>();
-				double freq = 0;
-				for (CipherSymbol symbol : ciphertext)
+				if (symbol.getPlaintextValue() == letter.getValue())
 				{
-					if (symbol.getPlaintextValue() == letter.getValue())
+					freq++;
+					if (!multiple.contains(symbol.getSymbolValue()))
 					{
-						freq++;
-						if (!multiple.contains(symbol.getSymbolValue()))
-						{
-							multiple.add(symbol.getSymbolValue());
-						}
+						multiple.add(symbol.getSymbolValue());
 					}
 				}
-				
-				freq = (freq/ciphertext.size()) * 100;
+			}
+			freq = (freq / ciphertext.size()) * 100;
 
- 				if ((freq)> letter.getFrequency())
+			if ((freq) > letter.getFrequency())
+			{
+				possibleAbove.put(letter.getValue(), multiple.size());
+			} else if (freq < letter.getFrequency())
+			{
+				if (multiple.isEmpty())
 				{
-					if (freq > amountAbove)
-					{
-						amountAbove = freq;
-						aboveToSwap = letter.getValue();
-						multipleAbove = false;
-						if (multiple.size() > 1)
-						{
-							multipleAbove = true;
-						}
-
-					}
-				} else if (freq < letter.getFrequency())
+					possibleBelow.put(letter.getValue(), 0);
+				} else
 				{
-					if (freq < amountAbove)
-					{
-						multipleBelow = false;
-						amountBelow = freq;
-						belowToSwap = letter.getValue();
-						if (multiple.size() > 1)
-						{
-							multipleBelow = true;
-						}
-					}
+					possibleAbove.put(letter.getValue(), multiple.size());
 				}
 			}
 		}
 
-		if (aboveToSwap == '0' && belowToSwap == '0')
+		char aboveToSwap = getRandomKey(possibleAbove);
+		char belowToSwap = getRandomKey(possibleBelow);
+
+		if (aboveToSwap == '0' || belowToSwap == '0')
 		{
 			return null;
-		} else if (amountBelow == 0)
+		} else if (possibleBelow.get(belowToSwap) == 0)
 		{
-			if (!multipleAbove)
+			if (possibleAbove.get(aboveToSwap) < 2)
 			{
 				return null;
 			}
@@ -152,26 +130,45 @@ public class Frequency
 			ciphertext = setSymbolToNewPlaintext(ciphertext, lowestSym, belowToSwap);
 			return ciphertext;
 		}
-		
-		char lowestBelow = findLowestFrequency(ciphertext, aboveToSwap);
-		char lowestAbove = findLowestFrequency(ciphertext, belowToSwap);
 
-		ciphertext = setSymbolToNewPlaintext(ciphertext, lowestBelow, belowToSwap);
-		ciphertext = setSymbolToNewPlaintext(ciphertext, lowestAbove, aboveToSwap);
+		char bSwap = findRandomFrequency(ciphertext, aboveToSwap);
+		char aSwap = findRandomFrequency(ciphertext, belowToSwap);
+
+		ciphertext = setSymbolToNewPlaintext(ciphertext, bSwap, belowToSwap);
+		ciphertext = setSymbolToNewPlaintext(ciphertext, aSwap, aboveToSwap);
 
 		return ciphertext;
 	}
 
-	private boolean containsCharacter(char[] unique, char toFind)
+	private char getRandomKey(HashMap<Character, Integer> toSwap)
 	{
-		for (char c : unique)
+		if (toSwap.size() == 0)
 		{
-			if (c == toFind)
+			return '0';
+		}
+		Random random = new Random();
+		List<Character> keys = new ArrayList<Character>(toSwap.keySet());
+		char randomKey = keys.get(random.nextInt(keys.size()));
+		return randomKey;
+	}
+
+	private char findRandomFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)
+	{
+		List<Character> multiple = new ArrayList<Character>();
+		for (CipherSymbol symbol : ciphertext)
+		{
+			if (symbol.getPlaintextValue() == aboveToSwap)
 			{
-				return true;
+				if (multiple.isEmpty() || !multiple.contains(symbol.getSymbolValue()))
+				{
+					multiple.add(symbol.getSymbolValue());
+				}
 			}
 		}
-		return false;
+
+		Random rand = new Random();
+		char randomInt = multiple.get(rand.nextInt(multiple.size()));
+		return randomInt;
 	}
 
 	private char findLowestFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)

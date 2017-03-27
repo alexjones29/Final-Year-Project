@@ -156,7 +156,7 @@ public class ScoreHandler
 		double score = 0;
 		if (input.length() == 3)
 		{
-			multiplier = 3;
+			multiplier = 4;
 		}
 
 		for (Map.Entry<String, Double> entry : ngram.entrySet())

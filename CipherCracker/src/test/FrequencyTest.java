@@ -1,7 +1,10 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -24,8 +27,8 @@ public class FrequencyTest
 	CipherSymbol symbol6;
 	CipherSymbol symbol7;
 	CipherSymbol symbol8;
-	double total;
-	
+	double cipherTextSize = 0;
+
 	/**
 	 * Given there are cipher symbols.
 	 */
@@ -39,7 +42,16 @@ public class FrequencyTest
 		symbol6 = new CipherSymbol('g');
 		symbol7 = new CipherSymbol('z');
 		symbol8 = new CipherSymbol('#');
-
+		
+		symbol1.setPlaintextValue('e');
+		symbol2.setPlaintextValue('f');
+		symbol3.setPlaintextValue('e');
+		symbol4.setPlaintextValue('t');
+		symbol5.setPlaintextValue('y');
+		symbol6.setPlaintextValue('t');
+		symbol7.setPlaintextValue('i');
+		symbol8.setPlaintextValue('e');
+		
 		ciphertext.add(symbol1);
 		ciphertext.add(symbol2);
 		ciphertext.add(symbol3);
@@ -48,7 +60,41 @@ public class FrequencyTest
 		ciphertext.add(symbol6);
 		ciphertext.add(symbol7);
 		ciphertext.add(symbol8);
-		total = 6;
+		cipherTextSize = ciphertext.size();
+	}
+	
+	private void givenSymbolCount()
+	{
+		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
+		for (CipherSymbol cipher : ciphertext)
+		{
+			if (occurences.containsKey(cipher.getSymbolValue()))
+			{
+				int temp = occurences.get(cipher.getSymbolValue());
+				temp++;
+				occurences.put(cipher.getSymbolValue(), temp);
+			} else
+			{
+				occurences.put(cipher.getSymbolValue(), 1);
+			}
+		}
+	}
+	
+	private void givenPlaintextCount()
+	{
+		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
+		for (CipherSymbol cipher : ciphertext)
+		{
+			if (occurences.containsKey(cipher.getPlaintextValue()))
+			{
+				int temp = occurences.get(cipher.getPlaintextValue());
+				temp++;
+				occurences.put(cipher.getPlaintextValue(), temp);
+			} else
+			{
+				occurences.put(cipher.getPlaintextValue(), 1);
+			}
+		}
 	}
 
 	/**
@@ -59,32 +105,59 @@ public class FrequencyTest
 		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(ciphertext);
 	}
+	
+	private void whenCalculatePlaintextFrequencyIsCalled()
+	{
+		Frequency frequency = new Frequency();
+		frequency.calculatePlaintextFrequency(ciphertext);
+	}
 
 	/**
 	 * Then the frequencies are set.
 	 */
 	private void thenTheFrequenciesAreSet()
 	{
-		assertEquals((2*100/total),symbol1.getFrequency(), 0);
-		assertEquals((2*100/total),symbol2.getFrequency(), 0);
-		assertEquals((1*100/total),symbol3.getFrequency(), 0);
-		assertEquals((2*100/total),symbol4.getFrequency(), 0);
-		assertEquals((1*100/total),symbol5.getFrequency(), 0);
-		assertEquals((1*100/total),symbol6.getFrequency(), 0);
-		assertEquals((1*100/total),symbol7.getFrequency(), 0);
-		assertEquals((2*100/total),symbol8.getFrequency(), 0);
+		assertEquals((2*100/cipherTextSize),symbol1.getFrequency(), 0);
+		assertEquals((2*100/cipherTextSize),symbol2.getFrequency(), 0);
+		assertEquals((1*100/cipherTextSize),symbol3.getFrequency(), 0);
+		assertEquals((2*100/cipherTextSize),symbol4.getFrequency(), 0);
+		assertEquals((1*100/cipherTextSize),symbol5.getFrequency(), 0);
+		assertEquals((1*100/cipherTextSize),symbol6.getFrequency(), 0);
+		assertEquals((1*100/cipherTextSize),symbol7.getFrequency(), 0);
+		assertEquals((2*100/cipherTextSize),symbol8.getFrequency(), 0);
+	}
+	
+	private void thenPlaintextFrequenciesAreSet()
+	{
+		assertEquals((3*100)/cipherTextSize ,symbol1.getPlaintextFrequency(),0);
+		assertEquals((1*100)/cipherTextSize ,symbol2.getPlaintextFrequency(),0);
+		assertEquals((3*100)/cipherTextSize ,symbol3.getPlaintextFrequency(),0);
+		assertEquals((2*100)/cipherTextSize ,symbol4.getPlaintextFrequency(),0);
+		assertEquals((1*100)/cipherTextSize ,symbol5.getPlaintextFrequency(),0);
+		assertEquals((2*100)/cipherTextSize ,symbol6.getPlaintextFrequency(),0);
+		assertEquals((1*100)/cipherTextSize ,symbol7.getPlaintextFrequency(),0);
+		assertEquals((3*100)/cipherTextSize ,symbol8.getPlaintextFrequency(),0);
 	}
 
 	/**
 	 * Test frequencies are calculated and assigned to the objects correctly.
 	 */
 	@Test
-	public void testFrequenciesAreCalculatedAndSetCorrectly()
+	public void testSymbolFrequenciesAreCalculatedAndSetCorrectly()
 	{
 		givenThereAreCipherSymbols();
+		givenSymbolCount();
 		whenCalculateSymbolFrequencyIsCalledWithAListOfSymbols();
 		thenTheFrequenciesAreSet();
 
 	}
-
+	
+	@Test
+	public void testPlaintextFrequenciesAreCalculatedAndSetCorrectly()
+	{
+		givenThereAreCipherSymbols();
+		givenPlaintextCount();
+		whenCalculatePlaintextFrequencyIsCalled();
+		thenPlaintextFrequenciesAreSet();
+	}
 }

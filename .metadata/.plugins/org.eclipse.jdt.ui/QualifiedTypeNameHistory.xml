@@ -30,4 +30,5 @@
 <fullyQualifiedTypeName name="main.ScoreHandler"/>
 <fullyQualifiedTypeName name="main.Frequency"/>
 <fullyQualifiedTypeName name="main.CipherSymbol"/>
+<fullyQualifiedTypeName name="test.InitialKeyTest"/>
 </qualifiedTypeNameHistroy>

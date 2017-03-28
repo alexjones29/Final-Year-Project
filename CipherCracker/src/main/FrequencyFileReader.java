@@ -73,7 +73,7 @@ public class FrequencyFileReader
 			while ((strLine = br.readLine()) != null)
 			{
 				String[] tokens = strLine.split(" : ");
-				String value = tokens[0];
+				String value = tokens[0].toLowerCase();
 				double freq = Double.parseDouble(tokens[1]);
 				nGram.put(value, freq);
 			}

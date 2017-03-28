@@ -13,7 +13,11 @@ import java.util.Set;
 public class ScoreHandler
 {
 
-	public ScoreHandler() {
+	/**
+	 * Instantiates a new score handler.
+	 */
+	public ScoreHandler() 
+	{
 
 	}
 
@@ -29,6 +33,23 @@ public class ScoreHandler
 		return 0;
 	}
 
+	/**
+	 * Calculate score.
+	 *
+	 * @param current
+	 *            the current
+	 * @param previousCharacters
+	 *            the previous characters
+	 * @param bigrams
+	 *            the bigrams
+	 * @param trigrams
+	 *            the trigrams
+	 * @param trie
+	 *            the trie
+	 * @param fullWords
+	 *            the full words
+	 * @return the double
+	 */
 	public double calculateScore(char current, ArrayList<Character> previousCharacters, HashMap<String, Double> bigrams,
 			HashMap<String, Double> trigrams, Trie trie, HashSet<String> fullWords)
 	{
@@ -55,6 +76,17 @@ public class ScoreHandler
 		return score;
 	}
 
+	/**
+	 * Format string.
+	 *
+	 * @param previousCharacters
+	 *            the previous characters
+	 * @param current
+	 *            the current
+	 * @param length
+	 *            the length
+	 * @return the string
+	 */
 	private String formatString(ArrayList<Character> previousCharacters, char current, int length)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -66,19 +98,25 @@ public class ScoreHandler
 		stringBuilder.append(current);
 		return stringBuilder.toString();
 	}
-	
+
+	/**
+	 * Returns true if there are consecutive letters.
+	 *
+	 * @param word
+	 *            the word
+	 * @return true, if there are consecutive letters
+	 */
 	private boolean consecutiveLetters(String word)
 	{
 		if (word.length() == 1)
 		{
 			return true;
-		}
-		else if (word.length()>2)
+		} else if (word.length() > 2)
 		{
-			char a = word.charAt(word.length()-1);
-			char b = word.charAt(word.length()-2);
-			char c = word.charAt(word.length()-3);
-			
+			char a = word.charAt(word.length() - 1);
+			char b = word.charAt(word.length() - 2);
+			char c = word.charAt(word.length() - 3);
+
 			if (a == b)
 			{
 				if (b == c)
@@ -108,33 +146,36 @@ public class ScoreHandler
 		{
 			score += wordToFind.length();
 		}
-		return score/2;
+		return score / 2;
 	}
-	
+
 	/**
 	 * Search.
 	 *
-	 * @param input the input
-	 * @param dictionary the dictionary
-	 * @param words the words
-	 * @param results the results
+	 * @param input
+	 *            the input
+	 * @param dictionary
+	 *            the dictionary
+	 * @param words
+	 *            the words
+	 * @param results
+	 *            the results
 	 */
 	public double search(String input, Set<String> dictionary)
 	{
 		double score = 0;
-		for (int i = 0; i < input.length()-2; i++)
+		for (int i = 0; i < input.length() - 2; i++)
 		{
 			String substring = input.substring(i, input.length());
 
-				if (dictionary.contains(substring))
-				{
-					score = substring.length();
-					break;
-				}
-				else if (StringUtils.getLevenshteinDistance(substring, input) <=1)
-				{
-					
-				}
+			if (dictionary.contains(substring))
+			{
+				score = substring.length();
+				break;
+			} else if (StringUtils.getLevenshteinDistance(substring, input) <= 1)
+			{
+
+			}
 		}
 		return score;
 	}

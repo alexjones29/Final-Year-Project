@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * The Class Frequency.
+ */
 public class Frequency
 {
+	
+	/**
+	 * Instantiates a new frequency.
+	 */
 	public Frequency() {
 
 	}
@@ -48,6 +55,13 @@ public class Frequency
 		}
 	}
 
+	/**
+	 * Calculates plaintext letter frequencies and assigns it to the relevant
+	 * filed on the symbol object.
+	 *
+	 * @param ciphertext
+	 *            the ciphertext
+	 */
 	public void calculatePlaintextFrequency(List<CipherSymbol> ciphertext)
 	{
 
@@ -78,6 +92,22 @@ public class Frequency
 		}
 	}
 
+	/**
+	 * Finds the swappable nodes based on expected letter frequency vs actual
+	 * frequency. Swaps a random symbol on a random letter that is above its
+	 * expected frequency with a random symbol on a random letter that is below
+	 * its expected frequency.
+	 * 
+	 * If there is no appropriate swap then returns null
+	 *
+	 * @param ciphertext
+	 *            the ciphertext
+	 * @param letters
+	 *            the letters
+	 * @param errorRate
+	 *            the error rate
+	 * @return the list
+	 */
 	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
 	{
 		HashMap<Character, Integer> possibleAbove = new HashMap<Character, Integer>();
@@ -140,6 +170,12 @@ public class Frequency
 		return ciphertext;
 	}
 
+	/**
+	 * Gets a random key from the map.
+	 *
+	 * @param toSwap the to swap
+	 * @return the random key
+	 */
 	private char getRandomKey(HashMap<Character, Integer> toSwap)
 	{
 		if (toSwap.size() == 0)
@@ -152,6 +188,13 @@ public class Frequency
 		return randomKey;
 	}
 
+	/**
+	 * Find a random symbol based on frequency.
+	 *
+	 * @param ciphertext the ciphertext
+	 * @param aboveToSwap the above to swap
+	 * @return the char
+	 */
 	private char findRandomFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)
 	{
 		List<Character> multiple = new ArrayList<Character>();
@@ -171,6 +214,13 @@ public class Frequency
 		return randomInt;
 	}
 
+	/**
+	 * Find lowest frequency.
+	 *
+	 * @param ciphertext the ciphertext
+	 * @param aboveToSwap the above to swap
+	 * @return the char
+	 */
 	private char findLowestFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)
 	{
 		char currentSymbol = '0';
@@ -188,6 +238,14 @@ public class Frequency
 		return currentSymbol;
 	}
 
+	/**
+	 * Sets the same symbols to the new plaintext value.
+	 *
+	 * @param ciphertext the ciphertext
+	 * @param symbol the symbol
+	 * @param plaintext the plaintext
+	 * @return the list
+	 */
 	private List<CipherSymbol> setSymbolToNewPlaintext(List<CipherSymbol> ciphertext, char symbol, char plaintext)
 	{
 		for (CipherSymbol symb : ciphertext)

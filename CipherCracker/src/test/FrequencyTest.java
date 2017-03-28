@@ -63,6 +63,9 @@ public class FrequencyTest
 		cipherTextSize = ciphertext.size();
 	}
 	
+	/**
+	 * Given symbol count.
+	 */
 	private void givenSymbolCount()
 	{
 		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
@@ -80,6 +83,9 @@ public class FrequencyTest
 		}
 	}
 	
+	/**
+	 * Given plaintext count.
+	 */
 	private void givenPlaintextCount()
 	{
 		Map<Character, Integer> occurences = new HashMap<Character, Integer>();
@@ -106,6 +112,9 @@ public class FrequencyTest
 		frequency.calculateSymbolFrequency(ciphertext);
 	}
 	
+	/**
+	 * When calculate plaintext frequency is called.
+	 */
 	private void whenCalculatePlaintextFrequencyIsCalled()
 	{
 		Frequency frequency = new Frequency();
@@ -127,6 +136,9 @@ public class FrequencyTest
 		assertEquals((2*100/cipherTextSize),symbol8.getFrequency(), 0);
 	}
 	
+	/**
+	 * Then plaintext frequencies are set.
+	 */
 	private void thenPlaintextFrequenciesAreSet()
 	{
 		assertEquals((3*100)/cipherTextSize ,symbol1.getPlaintextFrequency(),0);
@@ -152,6 +164,9 @@ public class FrequencyTest
 
 	}
 	
+	/**
+	 * Test plaintext frequencies are calculated and set correctly.
+	 */
 	@Test
 	public void testPlaintextFrequenciesAreCalculatedAndSetCorrectly()
 	{

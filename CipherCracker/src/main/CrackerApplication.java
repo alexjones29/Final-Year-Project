@@ -46,19 +46,28 @@ public class CrackerApplication
 			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
 		}
 		cipherText = performHillClimb(cipherText);
+		
+		System.out.println("DONE INNIT");
+		System.out.println("==================");
 		for (CipherSymbol sym : cipherText)
 		{
 			System.out.println(sym.getPlaintextValue());
 		}
 	}
 
+	/**
+	 * Performs the main hill climb.
+	 *
+	 * @param cipherText the cipher text
+	 * @return the list
+	 */
 	private List<CipherSymbol> performHillClimb(List<CipherSymbol> cipherText)
 	{
 		Frequency freq = new Frequency();
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 199)
+		while (bestScore < 185)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -82,16 +91,45 @@ public class CrackerApplication
 			} else
 			{
 				consecutive++;
-				if (consecutive >= 200)
+				if (consecutive >= 1000)
 				{
 					consecutive = 0;
-					cipherText = hillClimb(cipherText);
-					// randomRestart
-					System.out.println("got stuck");
+					cipherText = randomRestart(cipherText, bestScore);
+					bestScore = scoreRunThrough(cipherText);
 				}
 			}
 		}
 		return cipherText;
+	}
+
+	/**
+	 * Random restart.
+	 *
+	 * @param cipherText the cipher text
+	 * @param bestScore the best score
+	 * @return the list
+	 */
+	private List<CipherSymbol> randomRestart(List<CipherSymbol> cipherText, double bestScore)
+	{
+		List<CipherSymbol> text = cipherText;
+		double score = 0;
+		for (int i = 0; i<100; i++)
+		{
+			text = hillClimb(text);
+			score = scoreRunThrough(cipherText);
+
+			if (score > bestScore)
+			{
+				return text;
+			}
+			
+		}
+		
+//		if (score < bestScore)
+//		{
+//			cipherText = initialKey.createInitialKey(cipherText, letters);
+//		}
+		return text;
 	}
 
 	/**
@@ -192,6 +230,12 @@ public class CrackerApplication
 		return cipherText;
 	}
 
+	/**
+	 * Gets the random position.
+	 *
+	 * @param cipherText the cipher text
+	 * @return the random position
+	 */
 	private int getRandomPosition(List<CipherSymbol> cipherText)
 	{
 		Random rand = new Random();
@@ -199,6 +243,14 @@ public class CrackerApplication
 		return randomPosition;
 	}
 
+	/**
+	 * Returns the specified amount of previous letters.
+	 *
+	 * @param symbols the symbols
+	 * @param position the position
+	 * @param amount the amount
+	 * @return the array list
+	 */
 	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position, int amount)
 	{
 		ArrayList<Character> characters = new ArrayList<Character>();
@@ -288,6 +340,12 @@ public class CrackerApplication
 		return cipherText;
 	}
 
+	/**
+	 * Scores the hill climb run through.
+	 *
+	 * @param cipherText the cipher text
+	 * @return the double
+	 */
 	private double scoreRunThrough(List<CipherSymbol> cipherText)
 	{
 		ScoreHandler scoreHandler = new ScoreHandler();

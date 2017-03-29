@@ -15,6 +15,7 @@ public class CrackerApplication
 {
 
 	private List<Letter> letters = new ArrayList<Letter>();
+	private List<String> cribs = new ArrayList<String>();
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private Trie trie;
@@ -38,6 +39,10 @@ public class CrackerApplication
 		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 		File cipherFile = initialiseObjects();
 		letters = readInLettersAndFrequencies();
+		File crib = new File("resources/cribs.txt");
+		if(crib.exists() && !crib.isDirectory()) { 
+			cribs = dictionary.readInCrib(crib);
+		}
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
 		cipherText = calculateFrequency(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters);
@@ -67,7 +72,7 @@ public class CrackerApplication
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 185)
+		while (bestScore < 250)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -366,6 +371,15 @@ public class CrackerApplication
 					score += diction.length();
 				}
 			}
+		}
+		
+		for (String crib: cribs)
+		{
+			if (fullText.contains(crib))
+			{
+				score+=60;
+			}
+			
 		}
 
 		HashSet<String> textTrigrams = new HashSet<>();

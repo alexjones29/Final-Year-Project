@@ -68,6 +68,25 @@ public class DictionaryHandler
 		return trie;
 	}
 	
+	public List<String> readInCrib(File crib)
+	{
+		List<String> cribs = new ArrayList<String>();
+		Scanner filescan;
+		try
+		{
+			filescan = new Scanner(crib);
+			while (filescan.hasNext())
+			{
+				cribs.add(filescan.nextLine().toLowerCase());
+			}
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return cribs;
+		
+	}
+	
 	/**
 	 * Search.
 	 *

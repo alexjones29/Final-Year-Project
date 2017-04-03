@@ -1,6 +1,8 @@
 package main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -52,7 +54,7 @@ public class CrackerApplication
 		}
 		cipherText = performHillClimb(cipherText);
 		
-		System.out.println("DONE INNIT");
+		System.out.println("DONE");
 		System.out.println("==================");
 		for (CipherSymbol sym : cipherText)
 		{
@@ -72,7 +74,7 @@ public class CrackerApplication
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 250)
+		while (bestScore < 200)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -104,7 +106,34 @@ public class CrackerApplication
 				}
 			}
 		}
+		printOutText(cipherText, bestScore);
 		return cipherText;
+	}
+
+	private void printOutText(List<CipherSymbol> cipherText, double bestScore)
+	{
+		try
+		{
+			PrintWriter out = new PrintWriter("resources/attempts/" +bestScore+"attempt.txt");
+			String text = convertListToString(cipherText);
+			out.println(text);
+			out.close();
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+
+		
+	}
+
+	private String convertListToString(List<CipherSymbol> cipherText)
+	{
+		StringBuilder text = new StringBuilder();
+		for (CipherSymbol symbol: cipherText)
+		{
+			text.append(symbol.getPlaintextValue());
+		}
+		return text.toString();
 	}
 
 	/**
@@ -129,11 +158,6 @@ public class CrackerApplication
 			}
 			
 		}
-		
-//		if (score < bestScore)
-//		{
-//			cipherText = initialKey.createInitialKey(cipherText, letters);
-//		}
 		return text;
 	}
 
@@ -146,7 +170,7 @@ public class CrackerApplication
 	{
 		trie = new Trie(false);
 		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/encryptedpassage.txt");
+		File cipherFile = new File("resources/340cipherascii.txt");
 		return cipherFile;
 	}
 
@@ -303,28 +327,9 @@ public class CrackerApplication
 	}
 
 	/**
-	 * Returns true if the first number passed in(the current one) is greater
-	 * than the second one, or if the bestScore is 0.
-	 *
-	 * @param current
-	 *            the current
-	 * @param bestScore
-	 *            the best score
-	 * @return true, if successful
-	 */
-	private boolean currentIsBest(double current, double bestScore)
-	{
-		if (current > bestScore || bestScore == 0)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Calculates the symbol frequency of the cipher text.
 	 * 
-	 * @return
+	 * @return the ciphertext
 	 */
 	private List<CipherSymbol> calculateFrequency(List<CipherSymbol> cipherText)
 	{
@@ -336,7 +341,7 @@ public class CrackerApplication
 	/**
 	 * Calculates the symbol frequency of the cipher text.
 	 * 
-	 * @return
+	 * @return the ciphertext
 	 */
 	private List<CipherSymbol> calculatePlaintextFrequency(List<CipherSymbol> cipherText)
 	{
@@ -349,7 +354,7 @@ public class CrackerApplication
 	 * Scores the hill climb run through.
 	 *
 	 * @param cipherText the cipher text
-	 * @return the double
+	 * @return the score
 	 */
 	private double scoreRunThrough(List<CipherSymbol> cipherText)
 	{
@@ -372,14 +377,12 @@ public class CrackerApplication
 				}
 			}
 		}
-		
 		for (String crib: cribs)
 		{
 			if (fullText.contains(crib))
 			{
 				score+=60;
 			}
-			
 		}
 
 		HashSet<String> textTrigrams = new HashSet<>();

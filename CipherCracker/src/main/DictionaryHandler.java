@@ -32,7 +32,7 @@ public class DictionaryHandler
 		Scanner filescan;
 		try
 		{
-			filescan = new Scanner(new File("resources/dictionary.txt"));
+			filescan = new Scanner(new File("resources/408dictionary.txt"));
 			while (filescan.hasNext())
 			{
 				dictionaryWords.add(filescan.nextLine().toLowerCase());

@@ -116,6 +116,7 @@ public class Frequency
 		{
 			List<Character> multiple = new ArrayList<Character>();
 			double freq = 0;
+			double errorBound = errorRate;
 			for (CipherSymbol symbol : ciphertext)
 			{
 				if (symbol.getPlaintextValue() == letter.getValue())
@@ -129,10 +130,20 @@ public class Frequency
 			}
 			freq = (freq / ciphertext.size()) * 100;
 
-			if ((freq) > letter.getFrequency())
+			if (letter.getFrequency()<5)
+			{
+				errorBound = errorBound/2;
+				
+				if (letter.getFrequency()<2)
+				{
+					errorBound = errorBound/2;
+				}
+			}
+			
+			if ((freq-errorBound) > letter.getFrequency())
 			{
 				possibleAbove.put(letter.getValue(), multiple.size());
-			} else if (freq < letter.getFrequency())
+			} else if ((freq+errorBound) < letter.getFrequency())
 			{
 				if (multiple.isEmpty())
 				{

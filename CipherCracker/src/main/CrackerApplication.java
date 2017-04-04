@@ -74,7 +74,7 @@ public class CrackerApplication
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 200)
+		while (bestScore < 100)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -98,7 +98,7 @@ public class CrackerApplication
 			} else
 			{
 				consecutive++;
-				if (consecutive >= 1000)
+				if (consecutive >= 2000)
 				{
 					consecutive = 0;
 					cipherText = randomRestart(cipherText, bestScore);
@@ -170,7 +170,7 @@ public class CrackerApplication
 	{
 		trie = new Trie(false);
 		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/340cipherascii.txt");
+		File cipherFile = new File("resources/408cipher.txt");
 		return cipherFile;
 	}
 

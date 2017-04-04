@@ -34,7 +34,7 @@ public class FrequencyFileReader
 		List<Letter> letters = new ArrayList<Letter>();
 		try
 		{
-			FileInputStream fstream = new FileInputStream("resources/letters.txt");
+			FileInputStream fstream = new FileInputStream("resources/408letters.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;

@@ -74,7 +74,7 @@ public class CrackerApplication
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 100)
+		while (bestScore < 170)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -110,6 +110,12 @@ public class CrackerApplication
 		return cipherText;
 	}
 
+	/**
+	 * Prints out the best plaintext attempt.
+	 *
+	 * @param cipherText the cipher text
+	 * @param bestScore the best score
+	 */
 	private void printOutText(List<CipherSymbol> cipherText, double bestScore)
 	{
 		try
@@ -126,6 +132,12 @@ public class CrackerApplication
 		
 	}
 
+	/**
+	 * Converts a given list to a string.
+	 *
+	 * @param cipherText the cipher text
+	 * @return the string
+	 */
 	private String convertListToString(List<CipherSymbol> cipherText)
 	{
 		StringBuilder text = new StringBuilder();
@@ -170,7 +182,7 @@ public class CrackerApplication
 	{
 		trie = new Trie(false);
 		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/408cipher.txt");
+		File cipherFile = new File("resources/encryptedpassage.txt");
 		return cipherFile;
 	}
 

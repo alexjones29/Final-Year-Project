@@ -1,6 +1,5 @@
 package main;
 
-import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,18 +23,6 @@ public class ScoreHandler
 	/**
 	 * Calculate score.
 	 *
-	 * @param value
-	 *            the value
-	 * @return the double
-	 */
-	public double calculateScore(char value)
-	{
-		return 0;
-	}
-
-	/**
-	 * Calculate score.
-	 *
 	 * @param current
 	 *            the current
 	 * @param previousCharacters
@@ -46,12 +33,12 @@ public class ScoreHandler
 	 *            the trigrams
 	 * @param trie
 	 *            the trie
-	 * @param fullWords
+	 * @param dictionary
 	 *            the full words
 	 * @return the double
 	 */
 	public double calculateScore(char current, ArrayList<Character> previousCharacters, HashMap<String, Double> bigrams,
-			HashMap<String, Double> trigrams, Trie trie, HashSet<String> fullWords)
+			HashMap<String, Double> trigrams, Trie trie, HashSet<String> dictionary)
 	{
 		double score = 0;
 		String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
@@ -65,7 +52,7 @@ public class ScoreHandler
 		{
 			String trigramInput = formatString(previousCharacters, current, 2);
 			score += mapSearch(trigrams, trigramInput);
-			score += search(wordToFind, fullWords);
+			score += search(wordToFind, dictionary);
 		}
 
 		if (previousCharacters.size() >= 1)
@@ -87,7 +74,7 @@ public class ScoreHandler
 	 *            the length
 	 * @return the string
 	 */
-	private String formatString(ArrayList<Character> previousCharacters, char current, int length)
+	public String formatString(ArrayList<Character> previousCharacters, char current, int length)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
 		int start = previousCharacters.size() - length;
@@ -106,7 +93,7 @@ public class ScoreHandler
 	 *            the word
 	 * @return true, if there are consecutive letters
 	 */
-	private boolean consecutiveLetters(String word)
+	public boolean consecutiveLetters(String word)
 	{
 		if (word.length() == 1)
 		{
@@ -172,9 +159,6 @@ public class ScoreHandler
 			{
 				score = substring.length();
 				break;
-			} else if (StringUtils.getLevenshteinDistance(substring, input) <= 1)
-			{
-
 			}
 		}
 		return score;
@@ -197,7 +181,7 @@ public class ScoreHandler
 		double score = 0;
 		if (input.length() == 3)
 		{
-			multiplier = 4;
+			multiplier = 3;
 		}
 
 		for (Map.Entry<String, Double> entry : ngram.entrySet())

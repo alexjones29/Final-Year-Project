@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import main.ScoreHandler;
-import main.Trie;
 
 /**
  * The Class ScoreHandlerTest.
@@ -21,7 +20,6 @@ public class ScoreHandlerTest
 	@InjectMocks
 	private ScoreHandler scoreHandler;
 
-	private Trie trie;
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 	private char twoPrevious = '0';
@@ -34,11 +32,6 @@ public class ScoreHandlerTest
 	@Before
 	public void setup()
 	{
-		trie = new Trie(false);
-		trie.insert("example");
-		trie.insert("computer");
-		trie.insert("desk");
-
 		bigrams.put("ab", 0.2);
 		bigrams.put("th", 0.3);
 		bigrams.put("er", 0.4);

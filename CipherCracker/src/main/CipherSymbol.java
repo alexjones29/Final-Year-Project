@@ -10,7 +10,7 @@ public class CipherSymbol
 	private double plaintextFrequency = 0;
 	private double percentagefrequency;
 	private double bestScore = 0;
-	private boolean inWord = false;
+	private boolean fixed = false;
 	
 	/**
 	 * Gets the best score.
@@ -118,21 +118,41 @@ public class CipherSymbol
 		this.percentagefrequency = frequency;
 	}
 
-	public boolean isInWord()
+	/**
+	 * Checks if is fixed.
+	 *
+	 * @return true, if is fixed
+	 */
+	public boolean isFixed()
 	{
-		return inWord;
+		return fixed;
 	}
 
-	public void setInWord(boolean inWord)
+	/**
+	 * Sets the fixed.
+	 *
+	 * @param fixed the new fixed
+	 */
+	public void setFixed(boolean fixed)
 	{
-		this.inWord = inWord;
+		this.fixed = fixed;
 	}
 
+	/**
+	 * Gets the plaintext frequency.
+	 *
+	 * @return the plaintext frequency
+	 */
 	public double getPlaintextFrequency()
 	{
 		return plaintextFrequency;
 	}
 
+	/**
+	 * Sets the plaintext frequency.
+	 *
+	 * @param plaintextFrequency the new plaintext frequency
+	 */
 	public void setPlaintextFrequency(double plaintextFrequency)
 	{
 		this.plaintextFrequency = plaintextFrequency;

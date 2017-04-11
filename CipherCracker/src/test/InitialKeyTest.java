@@ -117,7 +117,7 @@ public class InitialKeyTest
 		}
 		
 		assertEquals(ciphertext.get(0).getPlaintextValue(),ciphertext.get(1).getPlaintextValue());
-		assertEquals(ciphertext.get(4).getPlaintextValue(),ciphertext.get(8).getPlaintextValue());
+		assertEquals(ciphertext.get(3).getPlaintextValue(),ciphertext.get(7).getPlaintextValue());
 	}
 	
 	/**

@@ -232,7 +232,7 @@ public class Frequency
 	 * @param aboveToSwap the above to swap
 	 * @return the char
 	 */
-	private char findLowestFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)
+	public char findLowestFrequency(List<CipherSymbol> ciphertext, char aboveToSwap)
 	{
 		char currentSymbol = '0';
 		double lowestFrequency = 0;
@@ -243,6 +243,7 @@ public class Frequency
 				if (lowestFrequency == 0 || symbol.getFrequency() < lowestFrequency)
 				{
 					currentSymbol = symbol.getSymbolValue();
+					lowestFrequency = symbol.getFrequency();
 				}
 			}
 		}
@@ -257,7 +258,7 @@ public class Frequency
 	 * @param plaintext the plaintext
 	 * @return the list
 	 */
-	private List<CipherSymbol> setSymbolToNewPlaintext(List<CipherSymbol> ciphertext, char symbol, char plaintext)
+	public List<CipherSymbol> setSymbolToNewPlaintext(List<CipherSymbol> ciphertext, char symbol, char plaintext)
 	{
 		for (CipherSymbol symb : ciphertext)
 		{

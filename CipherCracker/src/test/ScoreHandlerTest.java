@@ -14,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import main.ScoreHandler;
-import main.Trie;
 
 /**
  * The Class ScoreHandlerTest.
@@ -26,10 +25,9 @@ public class ScoreHandlerTest
 	@InjectMocks
 	private ScoreHandler scoreHandler;
 
-//	private Trie trie;
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
-	private Set<String> dictionary = new HashSet<String>();
+	private HashSet<String> dictionary = new HashSet<String>();
 	private char twoPrevious = '0';
 	private char previous = '0';
 	private char current = '0';
@@ -44,17 +42,14 @@ public class ScoreHandlerTest
 	@Before
 	public void setup()
 	{
-//		trie = new Trie(false);
-//		trie.insert("example");
-//		trie.insert("computer");
-//		trie.insert("desk");
-
 		bigrams.put("ab", 0.2);
 		bigrams.put("th", 0.3);
 		bigrams.put("er", 0.4);
 		bigrams.put("om", 0.33);
-
+		bigrams.put("ls", 0.5);
+		
 		trigrams.put("the", 1.3);
+		trigrams.put("tle", 1.5);
 		trigrams.put("com", 0.05);
 		trigrams.put("tra", 2.5);
 		trigrams.put("fab", 0.78);
@@ -65,6 +60,7 @@ public class ScoreHandlerTest
 		dictionary.add("computer");
 		dictionary.add("desk");
 		dictionary.add("bike");
+		dictionary.add("rattle");
 
 		previousCharacters.add('r');
 		previousCharacters.add('a');
@@ -98,6 +94,11 @@ public class ScoreHandlerTest
 	public void whenConsecutiveLettersIsCalled(String word)
 	{
 		consecutive = scoreHandler.consecutiveLetters(word);
+	}
+	
+	public void whenCalculateScoreIsCalled(char currentChar)
+	{
+		score = scoreHandler.calculateScore(currentChar, previousCharacters, bigrams, trigrams, dictionary);
 	}
 	
 	/**
@@ -329,10 +330,26 @@ public class ScoreHandlerTest
 		thenTheListIsFormattedCorrectly("tld", 3);
 	}
 	
+	/**
+	 * Test calculate score returns correct score with word found.
+	 */
 	@Test
-	public void testCalculateScoreReturnsCorrectScore()
+	public void testCalculateScoreReturnsCorrectScoreWithWordFound()
 	{
-		
+		double expectedScore = (3 * 1.5) + 6;
+		whenCalculateScoreIsCalled('e');
+		thenTheCorrectScoreIsReturned(expectedScore);
+	}
+	
+	/**
+	 * Test calculate score returns correct score with word not found.
+	 */
+	@Test
+	public void testCalculateScoreReturnsCorrectScoreWithWordNotFound()
+	{
+		double expectedScore = 2 * 0.5;
+		whenCalculateScoreIsCalled('s');
+		thenTheCorrectScoreIsReturned(expectedScore);
 	}
 
 }

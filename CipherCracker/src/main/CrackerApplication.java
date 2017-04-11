@@ -20,7 +20,6 @@ public class CrackerApplication
 	private List<String> cribs = new ArrayList<String>();
 	private CiphertextReader cipherReader;
 	private DictionaryHandler dictionary = new DictionaryHandler();
-	private Trie trie;
 	private InitialKey initialKey = new InitialKey();
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
@@ -180,7 +179,6 @@ public class CrackerApplication
 	 */
 	private File initialiseObjects()
 	{
-		trie = new Trie(false);
 		cipherReader = new CiphertextReader();
 		File cipherFile = new File("resources/encryptedpassage.txt");
 		return cipherFile;
@@ -210,7 +208,6 @@ public class CrackerApplication
 	public List<CipherSymbol> readInCiphertextAndDictionary(File cipherFile, List<CipherSymbol> cipherText)
 	{
 		cipherText = cipherReader.readInCipherText(cipherFile);
-		trie = dictionary.readInDictionary(trie);
 		fullWords = dictionary.readInDictionary(fullWords);
 		return cipherText;
 	}
@@ -235,8 +232,7 @@ public class CrackerApplication
 			{
 				break;
 			}
-			currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, trie,
-					fullWords);
+			currentScore = scorer.calculateScore(letter.getValue(), previousCharacters, bigrams, trigrams, fullWords);
 
 			if (currentScore >= currentBestScore)
 			{

@@ -27,7 +27,6 @@ import main.DictionaryHandler;
 import main.Frequency;
 import main.Letter;
 import main.FrequencyFileReader;
-import main.Trie;
 
 /**
  * The Class CiphertextReaderTest.
@@ -48,8 +47,6 @@ public class CrackerApplicationTest
 	private File testFile;
 	private List<CipherSymbol> cipherText;
 	private List<Letter> letters;
-	//unintialised as in the class as can't call the private initialise object methods
-	private Trie trie;
 	
 	/**
 	 * Setup.
@@ -59,7 +56,6 @@ public class CrackerApplicationTest
 	{
 		testFile = new File("resources/encryptedpassage.txt");
 		cipherText = new ArrayList<CipherSymbol>();
-//		trie = new Trie(false);
 		CipherSymbol symbol1 = new CipherSymbol('w');
 		CipherSymbol symbol2 = new CipherSymbol('q');
 		CipherSymbol symbol3 = new CipherSymbol('%');
@@ -71,7 +67,6 @@ public class CrackerApplicationTest
 	private void givenMethodCallsAreMocked()
 	{
 		when(cipherReader.readInCipherText(testFile)).thenReturn(cipherText);
-		when(diction.readInDictionary(trie)).thenReturn(trie);
 		List<Letter> lttrs = new ArrayList<Letter>();
 		Letter l = new Letter('a', 2.2);
 		lttrs.add(l);
@@ -105,14 +100,6 @@ public class CrackerApplicationTest
 	}
 	
 	/**
-	 * Then dictionary is read in to A trie.
-	 */
-	private void thenDictionaryIsReadInToATrie()
-	{
-		verify(diction, times(1)).readInDictionary(trie);
-	}
-	
-	/**
 	 * Then the list of letters is returned.
 	 */
 	private void thenTheListOfLettersIsReturned()
@@ -130,7 +117,6 @@ public class CrackerApplicationTest
 		givenMethodCallsAreMocked();
 		whenReadInCipherTextIsCalled(testFile);
 		thenTheCipherTextIsReadIn();
-		thenDictionaryIsReadInToATrie();
 	}
 	
 	/**
@@ -143,7 +129,4 @@ public class CrackerApplicationTest
 		whenReadInLettersAndFrequenciesIsCalled();
 		thenTheListOfLettersIsReturned();
 	}
-	
-	
-
 }

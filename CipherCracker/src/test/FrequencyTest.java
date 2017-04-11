@@ -7,6 +7,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import main.CipherSymbol;
@@ -18,27 +19,33 @@ import main.Frequency;
 public class FrequencyTest
 {
 	
-	List<CipherSymbol> ciphertext = new ArrayList<CipherSymbol>();
-	CipherSymbol symbol1;
-	CipherSymbol symbol2;
-	CipherSymbol symbol3;
-	CipherSymbol symbol4;
-	CipherSymbol symbol5;
-	CipherSymbol symbol6;
-	CipherSymbol symbol7;
-	CipherSymbol symbol8;
-	double cipherTextSize = 0;
+	private Frequency frequency = new Frequency();
+	private List<CipherSymbol> ciphertext = new ArrayList<CipherSymbol>();
+	private List<CipherSymbol> alteredCiphertext = new ArrayList<CipherSymbol>();
+	private CipherSymbol symbol1;
+	private CipherSymbol symbol2;
+	private CipherSymbol symbol3;
+	private CipherSymbol symbol4;
+	private CipherSymbol symbol5;
+	private CipherSymbol symbol6;
+	private CipherSymbol symbol7;
+	private CipherSymbol symbol8;
+	private double cipherTextSize = 0;
+	private char lowest = '0';
 
 	/**
-	 * Given there are cipher symbols.
+	 * Setup.
 	 */
-	private void givenThereAreCipherSymbols()
+	@Before
+	public void setup()
 	{
+		lowest = '0';
+		
 		symbol1 = new CipherSymbol('a');
-		symbol2 = new CipherSymbol('a');
+		symbol2 = new CipherSymbol('c');
 		symbol3 = new CipherSymbol('k');
 		symbol4 = new CipherSymbol('#');
-		symbol5 = new CipherSymbol('v');
+		symbol5 = new CipherSymbol('a');
 		symbol6 = new CipherSymbol('g');
 		symbol7 = new CipherSymbol('z');
 		symbol8 = new CipherSymbol('#');
@@ -47,10 +54,10 @@ public class FrequencyTest
 		symbol2.setPlaintextValue('f');
 		symbol3.setPlaintextValue('e');
 		symbol4.setPlaintextValue('t');
-		symbol5.setPlaintextValue('y');
+		symbol5.setPlaintextValue('e');
 		symbol6.setPlaintextValue('t');
 		symbol7.setPlaintextValue('i');
-		symbol8.setPlaintextValue('e');
+		symbol8.setPlaintextValue('t');
 		
 		ciphertext.add(symbol1);
 		ciphertext.add(symbol2);
@@ -102,14 +109,42 @@ public class FrequencyTest
 			}
 		}
 	}
+	
+	/**
+	 * Given frequencies are calculated and set.
+	 */
+	private void givenFrequenciesAreCalculatedAndSet()
+	{
+		frequency.calculatePlaintextFrequency(ciphertext);
+		frequency.calculateSymbolFrequency(ciphertext);
+	}
 
 	/**
 	 * When calculate symbol frequency is called with A list of symbols.
 	 */
 	private void whenCalculateSymbolFrequencyIsCalledWithAListOfSymbols()
 	{
-		Frequency frequency = new Frequency();
 		frequency.calculateSymbolFrequency(ciphertext);
+	}
+	
+	/**
+	 * When set symbol to new plaintext is called.
+	 *
+	 * @param symbol the symbol
+	 * @param plaintext the plaintext
+	 */
+	private void whenSetSymbolToNewPlaintextIsCalled(char symbol, char plaintext)
+	{
+		alteredCiphertext = frequency.setSymbolToNewPlaintext(ciphertext, symbol, plaintext);
+	}
+	/**
+	 * When lowest frequency is called.
+	 *
+	 * @param toSwap the to swap
+	 */
+	private void whenLowestFrequencyIsCalled(char toSwap)
+	{
+		lowest = frequency.findLowestFrequency(ciphertext, toSwap);
 	}
 	
 	/**
@@ -117,8 +152,34 @@ public class FrequencyTest
 	 */
 	private void whenCalculatePlaintextFrequencyIsCalled()
 	{
-		Frequency frequency = new Frequency();
 		frequency.calculatePlaintextFrequency(ciphertext);
+	}
+	
+	/**
+	 * Then lowest is returned.
+	 *
+	 * @param expected the expected
+	 */
+	private void thenLowestIsReturned(char expected)
+	{
+		assertEquals(String.valueOf(expected), String.valueOf(lowest));
+	}
+	
+	/**
+	 * Then symbols are set correctly.
+	 *
+	 * @param symbol the symbol
+	 * @param plaintext the plaintext
+	 */
+	private void thenSymbolsAreSetCorrectly(char symbol, char plaintext)
+	{
+		for (CipherSymbol sym : alteredCiphertext)
+		{
+			if (sym.getSymbolValue() == symbol)
+			{
+				assertEquals(String.valueOf(plaintext), String.valueOf(sym.getPlaintextValue()));
+			}
+		}
 	}
 
 	/**
@@ -127,10 +188,10 @@ public class FrequencyTest
 	private void thenTheFrequenciesAreSet()
 	{
 		assertEquals((2*100/cipherTextSize),symbol1.getFrequency(), 0);
-		assertEquals((2*100/cipherTextSize),symbol2.getFrequency(), 0);
+		assertEquals((1*100/cipherTextSize),symbol2.getFrequency(), 0);
 		assertEquals((1*100/cipherTextSize),symbol3.getFrequency(), 0);
 		assertEquals((2*100/cipherTextSize),symbol4.getFrequency(), 0);
-		assertEquals((1*100/cipherTextSize),symbol5.getFrequency(), 0);
+		assertEquals((2*100/cipherTextSize),symbol5.getFrequency(), 0);
 		assertEquals((1*100/cipherTextSize),symbol6.getFrequency(), 0);
 		assertEquals((1*100/cipherTextSize),symbol7.getFrequency(), 0);
 		assertEquals((2*100/cipherTextSize),symbol8.getFrequency(), 0);
@@ -144,9 +205,9 @@ public class FrequencyTest
 		assertEquals((3*100)/cipherTextSize ,symbol1.getPlaintextFrequency(),0);
 		assertEquals((1*100)/cipherTextSize ,symbol2.getPlaintextFrequency(),0);
 		assertEquals((3*100)/cipherTextSize ,symbol3.getPlaintextFrequency(),0);
-		assertEquals((2*100)/cipherTextSize ,symbol4.getPlaintextFrequency(),0);
-		assertEquals((1*100)/cipherTextSize ,symbol5.getPlaintextFrequency(),0);
-		assertEquals((2*100)/cipherTextSize ,symbol6.getPlaintextFrequency(),0);
+		assertEquals((3*100)/cipherTextSize ,symbol4.getPlaintextFrequency(),0);
+		assertEquals((3*100)/cipherTextSize ,symbol5.getPlaintextFrequency(),0);
+		assertEquals((3*100)/cipherTextSize ,symbol6.getPlaintextFrequency(),0);
 		assertEquals((1*100)/cipherTextSize ,symbol7.getPlaintextFrequency(),0);
 		assertEquals((3*100)/cipherTextSize ,symbol8.getPlaintextFrequency(),0);
 	}
@@ -157,7 +218,6 @@ public class FrequencyTest
 	@Test
 	public void testSymbolFrequenciesAreCalculatedAndSetCorrectly()
 	{
-		givenThereAreCipherSymbols();
 		givenSymbolCount();
 		whenCalculateSymbolFrequencyIsCalledWithAListOfSymbols();
 		thenTheFrequenciesAreSet();
@@ -170,9 +230,31 @@ public class FrequencyTest
 	@Test
 	public void testPlaintextFrequenciesAreCalculatedAndSetCorrectly()
 	{
-		givenThereAreCipherSymbols();
 		givenPlaintextCount();
 		whenCalculatePlaintextFrequencyIsCalled();
 		thenPlaintextFrequenciesAreSet();
 	}
+	
+	/**
+	 * Test find lowest frequency finds lowest.
+	 */
+	@Test
+	public void testFindLowestFrequencyFindsLowest()
+	{
+		givenFrequenciesAreCalculatedAndSet();
+		whenLowestFrequencyIsCalled('e');
+		thenLowestIsReturned('k');
+	}
+	
+	/**
+	 * Symbols are set to new plaintext.
+	 */
+	@Test
+	public void symbolsAreSetToNewPlaintext()
+	{
+		whenSetSymbolToNewPlaintextIsCalled('k','i');
+		thenSymbolsAreSetCorrectly('k', 'i');
+	}
+
+		
 }

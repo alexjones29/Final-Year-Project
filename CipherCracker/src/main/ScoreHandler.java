@@ -38,7 +38,7 @@ public class ScoreHandler
 	 * @return the double
 	 */
 	public double calculateScore(char current, ArrayList<Character> previousCharacters, HashMap<String, Double> bigrams,
-			HashMap<String, Double> trigrams, Trie trie, HashSet<String> dictionary)
+			HashMap<String, Double> trigrams, HashSet<String> dictionary)
 	{
 		double score = 0;
 		String wordToFind = formatString(previousCharacters, current, previousCharacters.size());
@@ -113,27 +113,6 @@ public class ScoreHandler
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Searches the trie for the given word and returns a score based on its
-	 * presence and length.
-	 *
-	 * @param trie
-	 *            the trie
-	 * @param wordToFind
-	 *            the bigram input
-	 * @param score
-	 *            the score
-	 * @return the double
-	 */
-	private double prefixMatch(Trie trie, String wordToFind, double score)
-	{
-		if (trie.contains(wordToFind))
-		{
-			score += wordToFind.length();
-		}
-		return score / 2;
 	}
 
 	/**

@@ -14,7 +14,6 @@
 <fullyQualifiedTypeName name="main.HillClimber"/>
 <fullyQualifiedTypeName name="main.DictionaryHandler"/>
 <fullyQualifiedTypeName name="main.Trie"/>
-<fullyQualifiedTypeName name="org.junit.Before"/>
 <fullyQualifiedTypeName name="main.Letter"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="main.CrackerApplication"/>
@@ -32,4 +31,5 @@
 <fullyQualifiedTypeName name="test.InitialKeyTest"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
 </qualifiedTypeNameHistroy>

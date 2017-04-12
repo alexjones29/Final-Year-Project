@@ -122,7 +122,7 @@ public class Frequency
 				if (symbol.getPlaintextValue() == letter.getValue())
 				{
 					freq++;
-					if (!multiple.contains(symbol.getSymbolValue()))
+					if (!multiple.contains(symbol.getSymbolValue()) && !symbol.isFixed())
 					{
 						multiple.add(symbol.getSymbolValue());
 					}
@@ -175,10 +175,35 @@ public class Frequency
 		char bSwap = findRandomFrequency(ciphertext, aboveToSwap);
 		char aSwap = findRandomFrequency(ciphertext, belowToSwap);
 
+		if (bSwap == '0' || aSwap == '0')
+		{
+			return null;
+		}
+		
+		if (checkIfFixed(ciphertext,bSwap) || checkIfFixed(ciphertext, aSwap))
+		{
+			return null;
+		}
+		
 		ciphertext = setSymbolToNewPlaintext(ciphertext, bSwap, belowToSwap);
 		ciphertext = setSymbolToNewPlaintext(ciphertext, aSwap, aboveToSwap);
 
 		return ciphertext;
+	}
+	
+	private boolean checkIfFixed(List<CipherSymbol> ciphertext, char toSwap)
+	{
+		for (CipherSymbol symbol : ciphertext)
+		{
+			if (symbol.getSymbolValue() == toSwap)
+			{
+				if (symbol.isFixed())
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -211,7 +236,7 @@ public class Frequency
 		List<Character> multiple = new ArrayList<Character>();
 		for (CipherSymbol symbol : ciphertext)
 		{
-			if (symbol.getPlaintextValue() == aboveToSwap)
+			if (symbol.getPlaintextValue() == aboveToSwap && !symbol.isFixed())
 			{
 				if (multiple.isEmpty() || !multiple.contains(symbol.getSymbolValue()))
 				{
@@ -220,6 +245,10 @@ public class Frequency
 			}
 		}
 
+		if (multiple.isEmpty())
+		{
+			return '0';
+		}
 		Random rand = new Random();
 		char randomInt = multiple.get(rand.nextInt(multiple.size()));
 		return randomInt;
@@ -238,7 +267,7 @@ public class Frequency
 		double lowestFrequency = 0;
 		for (CipherSymbol symbol : ciphertext)
 		{
-			if (symbol.getPlaintextValue() == aboveToSwap)
+			if (symbol.getPlaintextValue() == aboveToSwap && !symbol.isFixed())
 			{
 				if (lowestFrequency == 0 || symbol.getFrequency() < lowestFrequency)
 				{

@@ -28,7 +28,9 @@
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="main.ScoreHandler"/>
 <fullyQualifiedTypeName name="main.Frequency"/>
-<fullyQualifiedTypeName name="main.CipherSymbol"/>
 <fullyQualifiedTypeName name="test.InitialKeyTest"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Character"/>
+<fullyQualifiedTypeName name="main.CipherSymbol"/>
 </qualifiedTypeNameHistroy>

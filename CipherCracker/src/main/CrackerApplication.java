@@ -46,6 +46,7 @@ public class CrackerApplication
 		}
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
 		cipherText = calculateFrequency(cipherText);
+		cipherText = initialKey.readInFixedLetterFile(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters);
 		for (CipherSymbol sym : cipherText)
 		{
@@ -73,7 +74,7 @@ public class CrackerApplication
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 100)
+		while (bestScore < 220)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -109,6 +110,12 @@ public class CrackerApplication
 		return cipherText;
 	}
 
+	/**
+	 * Prints the out text.
+	 *
+	 * @param cipherText the cipher text
+	 * @param bestScore the best score
+	 */
 	private void printOutText(List<CipherSymbol> cipherText, double bestScore)
 	{
 		try
@@ -125,6 +132,12 @@ public class CrackerApplication
 		
 	}
 
+	/**
+	 * Convert list to string.
+	 *
+	 * @param cipherText the cipher text
+	 * @return the string
+	 */
 	private String convertListToString(List<CipherSymbol> cipherText)
 	{
 		StringBuilder text = new StringBuilder();
@@ -206,8 +219,14 @@ public class CrackerApplication
 	public List<CipherSymbol> hillClimb(List<CipherSymbol> cipherText)
 	{
 		ScoreHandler scorer = new ScoreHandler();
-		int randomPosition = getRandomPosition(cipherText);
-
+		int randomPosition = 0;
+		randomPosition = getRandomPosition(cipherText);
+		
+		while (cipherText.get(randomPosition).isFixed())
+		{
+			randomPosition = getRandomPosition(cipherText);
+		}
+		
 		char currentBestLetter = 0;
 		double currentBestScore = 0;
 		double currentScore = 0;

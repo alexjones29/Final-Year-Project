@@ -1,6 +1,12 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class InitialKey
@@ -9,6 +15,51 @@ public class InitialKey
 	public InitialKey()
 	{
 		
+	}
+	
+	/**
+	 * Read in letter file containing letter value and frequency as a percentage,
+	 * creates the object and adds it to the list to be returned.
+	 *
+	 * @return the list of letter objects
+	 */
+	public List<CipherSymbol> readInFixedLetterFile(List<CipherSymbol> ciphertext)
+	{
+		HashMap<String, String> fixedLetters = new HashMap<String, String> ();
+		try
+		{
+			FileInputStream fstream = new FileInputStream("resources/fixedLetters.txt");
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine;
+			while ((strLine = br.readLine()) != null)
+			{
+				String[] tokens = strLine.split(" : ");
+				String symb = tokens[0];
+				String plain = tokens[1];
+				fixedLetters.put(symb, plain);
+			}
+			in.close();
+		} catch (Exception e)
+		{
+			System.err.println("Error: " + e.getMessage());
+		}
+		
+		for (CipherSymbol cipher : ciphertext)
+		{
+			for (Map.Entry<String, String> entry : fixedLetters.entrySet())
+			{
+				String key = entry.getKey();
+				if (key.charAt(0) == (cipher.getSymbolValue()))
+				{
+					cipher.setPlaintextValue(entry.getValue().charAt(0));
+					cipher.setFixed(true);
+				}
+			}
+		}
+		
+		return ciphertext;
+
 	}
 	
 	/**
@@ -30,7 +81,7 @@ public class InitialKey
 		
 		for (CipherSymbol symbol : symbols)
 		{
-			if (symbol.getPlaintextValue()==0)
+			if (symbol.getPlaintextValue()==0 && !symbol.isFixed())
 			{
 				int location = rouletteSelect(weight);
 				Letter letter = letters.get(location);

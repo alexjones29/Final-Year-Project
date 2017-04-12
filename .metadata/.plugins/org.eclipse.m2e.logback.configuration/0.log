@@ -15916,3 +15916,267 @@ Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to tra
 2017-04-11 17:59:15,071 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
 2017-04-11 17:59:15,075 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2017-04-11 17:59:15,083 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:33:54,367 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:33:54,395 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:33:54,399 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:33:54,415 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:33:57,693 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:33:57,705 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:33:57,708 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:33:57,718 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:37:59,435 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:37:59,447 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:37:59,450 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:37:59,462 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:38:30,829 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:38:30,840 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:38:30,843 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:38:30,852 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:38:57,339 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:38:57,347 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:38:57,349 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:38:57,357 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:40:06,918 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:06,928 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:40:06,933 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:06,946 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:40:47,598 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:47,611 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:40:47,614 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:47,624 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:40:48,835 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:48,853 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:40:48,861 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:40:48,872 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:41:26,146 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:41:26,155 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:41:26,158 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:41:26,168 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:42:10,640 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:42:10,655 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:42:10,661 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:42:10,673 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 12:54:11,744 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:54:11,750 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 12:54:11,754 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 12:54:11,763 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:12:32,487 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:12:32,501 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:12:32,506 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:12:32,512 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:12:37,705 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:12:37,712 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:12:37,714 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:12:37,729 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:32:52,495 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:32:52,505 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:32:52,509 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:32:52,521 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:33:04,592 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:33:04,600 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:33:04,602 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:33:04,609 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:39:01,096 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:39:01,104 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:39:01,109 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:39:01,115 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:42:40,140 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:42:40,153 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:42:40,156 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:42:40,163 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:45:52,469 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:45:52,480 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:45:52,485 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:45:52,493 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 13:52:13,533 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:52:13,541 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 13:52:13,543 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 13:52:13,548 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:03:58,942 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:03:58,951 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:03:58,954 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:03:58,960 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:04:10,798 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:04:10,806 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:04:10,810 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:04:10,817 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:05:41,349 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:05:41,358 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:05:41,362 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:05:41,367 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:13:45,259 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:13:45,265 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:13:45,267 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:13:45,272 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:14:14,574 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:14,582 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:14:14,586 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:14,593 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:14:21,134 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:21,140 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:14:21,142 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:21,148 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:14:23,293 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:23,302 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:14:23,307 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:23,314 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:14:30,816 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:30,822 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:14:30,824 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:30,832 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:14:33,954 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:33,963 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:14:33,967 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:14:33,972 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:15:31,700 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:15:31,708 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:15:31,713 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:15:31,727 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:15:41,187 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:15:41,198 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:15:41,202 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:15:41,209 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:16:22,955 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:16:22,963 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:16:22,967 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:16:22,974 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:16:59,170 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:16:59,187 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:16:59,193 [Worker-69] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:16:59,207 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:17:26,280 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:17:26,286 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:17:26,288 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:17:26,293 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:18:17,180 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:17,197 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:18:17,205 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:17,211 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:18:23,430 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:23,437 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:18:23,439 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:23,447 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:18:35,022 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:35,033 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:18:35,037 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:18:35,044 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:31:44,732 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:31:44,738 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:31:44,741 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:31:44,759 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:32:14,582 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:32:14,591 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:32:14,595 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:32:14,614 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:32:21,490 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:32:21,501 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:32:21,504 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:32:21,511 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:37:16,726 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:37:16,734 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:37:16,739 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:37:16,746 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:42:28,473 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:28,488 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:42:28,491 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:28,497 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:42:29,870 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:29,893 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:42:29,901 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:29,916 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:42:32,121 [Worker-91] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:32,134 [Worker-91] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:42:32,136 [Worker-91] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:42:32,144 [Worker-91] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 14:51:16,791 [Worker-103] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:51:16,809 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 14:51:16,822 [Worker-103] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 14:51:16,832 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 15:24:55,937 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 15:24:55,947 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 15:24:55,948 [Worker-123] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 15:24:55,954 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:01,426 [Worker-133] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:01,436 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:01,441 [Worker-133] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:01,447 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:04,676 [Worker-134] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:04,684 [Worker-134] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:04,685 [Worker-134] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:04,692 [Worker-134] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:05,815 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:05,824 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:05,827 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:05,833 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:16,663 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:16,671 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:16,672 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:16,679 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:17,800 [Worker-134] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:17,807 [Worker-134] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:17,811 [Worker-134] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:17,818 [Worker-134] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:18,939 [Worker-133] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:18,945 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:18,946 [Worker-133] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:18,952 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:28,861 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:28,873 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:28,877 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:28,883 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:09:32,282 [Worker-136] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:32,296 [Worker-136] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:09:32,299 [Worker-136] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:09:32,305 [Worker-136] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:10:30,838 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:30,847 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:10:30,852 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:30,858 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:10:36,174 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:36,182 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:10:36,184 [Worker-132] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:36,190 [Worker-132] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:10:41,866 [Worker-135] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:41,873 [Worker-135] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:10:41,877 [Worker-135] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:41,881 [Worker-135] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:10:44,055 [Worker-137] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:44,068 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:10:44,071 [Worker-137] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:44,078 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:10:46,463 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:46,471 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:10:46,476 [Worker-131] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:10:46,486 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:28:55,210 [Worker-145] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:28:55,218 [Worker-145] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:28:55,222 [Worker-145] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:28:55,227 [Worker-145] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:55:28,132 [Worker-159] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:55:28,143 [Worker-159] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:55:28,148 [Worker-159] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:55:28,153 [Worker-159] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 16:59:26,999 [Worker-162] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:59:27,016 [Worker-162] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 16:59:27,018 [Worker-162] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 16:59:27,024 [Worker-162] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 17:06:32,498 [Worker-172] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:06:32,512 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 17:06:32,517 [Worker-172] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:06:32,524 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 17:34:51,370 [Worker-196] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:34:51,380 [Worker-196] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 17:34:51,385 [Worker-196] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:34:51,397 [Worker-196] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 17:35:59,259 [Worker-192] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:35:59,275 [Worker-192] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 17:35:59,282 [Worker-192] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:35:59,288 [Worker-192] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 17:36:15,299 [Worker-204] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:36:15,307 [Worker-204] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 17:36:15,311 [Worker-204] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:36:15,317 [Worker-204] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources
+2017-04-12 17:36:18,510 [Worker-207] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:36:18,520 [Worker-207] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\main\resources
+2017-04-12 17:36:18,524 [Worker-207] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-12 17:36:18,530 [Worker-207] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\408\Final-Year-Project\CipherCracker\src\test\resources

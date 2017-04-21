@@ -81,7 +81,7 @@ public class CrackerApplication
 			
 			if (newCipherText == null || newCipherText.isEmpty())
 			{
-				newCipherText = hillClimb(cipherText);
+				newCipherText = assignBestLetter(cipherText);
 			} 
 			
 			double score = scoreRunThrough(newCipherText);
@@ -160,7 +160,7 @@ public class CrackerApplication
 		double score = 0;
 		for (int i = 0; i<100; i++)
 		{
-			text = hillClimb(text);
+			text = assignBestLetter(text);
 			score = scoreRunThrough(cipherText);
 
 			if (score > bestScore)
@@ -213,9 +213,9 @@ public class CrackerApplication
 	}
 
 	/**
-	 * This method performs the basic hill climbing.
+	 * This method looks at a random position in the cipher text and assigns a letter to that symbol based on its previous letters and score.
 	 */
-	public List<CipherSymbol> hillClimb(List<CipherSymbol> cipherText)
+	public List<CipherSymbol> assignBestLetter(List<CipherSymbol> cipherText)
 	{
 		ScoreHandler scorer = new ScoreHandler();
 		int randomPosition = getRandomPosition(cipherText);

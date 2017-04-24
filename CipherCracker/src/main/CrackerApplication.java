@@ -55,10 +55,6 @@ public class CrackerApplication
 		
 		System.out.println("DONE");
 		System.out.println("==================");
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getPlaintextValue());
-		}
 	}
 
 	/**
@@ -294,7 +290,7 @@ public class CrackerApplication
 		position--;
 		for (int counter = position; counter >= 0; counter--)
 		{
-			if (characters.size() >= amount || symbols.get(counter).isInWord())
+			if (characters.size() >= amount)
 			{
 				break;
 			} else

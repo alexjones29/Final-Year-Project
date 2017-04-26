@@ -47,14 +47,7 @@ public class CrackerApplication
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
 		cipherText = calculateFrequency(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters);
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
-		}
 		cipherText = performHillClimb(cipherText);
-		
-		System.out.println("DONE");
-		System.out.println("==================");
 	}
 
 	/**

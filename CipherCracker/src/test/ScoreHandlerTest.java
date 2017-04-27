@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,9 +27,6 @@ public class ScoreHandlerTest
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 	private HashSet<String> dictionary = new HashSet<String>();
-	private char twoPrevious = '0';
-	private char previous = '0';
-	private char current = '0';
 	private boolean consecutive = false;
 	private double score = 0;
 	private ArrayList<Character> previousCharacters = new ArrayList<Character>();
@@ -67,23 +63,6 @@ public class ScoreHandlerTest
 		previousCharacters.add('t');
 		previousCharacters.add('t');
 		previousCharacters.add('l');
-	}
-	
-	/**
-	 * Given characters.
-	 *
-	 * @param a
-	 *            the a
-	 * @param b
-	 *            the b
-	 * @param c
-	 *            the c
-	 */
-	public void givenCharacters(char a, char b, char c)
-	{
-		twoPrevious = a;
-		previous = b;
-		current = c;
 	}
 	
 	/**

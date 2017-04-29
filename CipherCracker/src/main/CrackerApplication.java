@@ -1,7 +1,10 @@
 package main;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +27,8 @@ public class CrackerApplication
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 	private HashSet<String> fullWords = new HashSet<String>();
-
+	private long startTime;
+	
 	/**
 	 * Instantiates a new cracker application.
 	 */
@@ -73,8 +77,9 @@ public class CrackerApplication
 		Frequency freq = new Frequency();
 		int consecutive = 0;
 		double bestScore = scoreRunThrough(cipherText);
+		appendScore(bestScore);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 220)
+		while (bestScore < 255)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -90,6 +95,7 @@ public class CrackerApplication
 			{
 				cipherText = newCipherText;
 				bestScore = score;
+				appendScore(bestScore);
 				consecutive = 0;
 				for (CipherSymbol sym : cipherText)
 				{
@@ -103,11 +109,27 @@ public class CrackerApplication
 					consecutive = 0;
 					cipherText = randomRestart(cipherText, bestScore);
 					bestScore = scoreRunThrough(cipherText);
+					appendScore(bestScore);
 				}
 			}
 		}
 		printOutText(cipherText, bestScore);
 		return cipherText;
+	}
+	
+	public void appendScore(double score)
+	{
+		try(FileWriter fw = new FileWriter("resources/scores.txt", true);
+			    BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw))
+			{
+				long currentTime = System.nanoTime();
+				long elapsed = currentTime - startTime;
+				double seconds = (double)elapsed / 1000000000.0;
+			    out.println(score + ":" + seconds);
+			} catch (IOException e) {
+			    //exception handling left as an exercise for the reader
+			}
 	}
 
 	/**

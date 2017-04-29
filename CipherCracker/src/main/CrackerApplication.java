@@ -68,7 +68,7 @@ public class CrackerApplication
 		double bestScore = scoreRunThrough(cipherText);
 		appendScore(bestScore);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 190)
+		while (bestScore < 210)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
@@ -138,7 +138,7 @@ public class CrackerApplication
 				double seconds = (double)elapsed / 1000000000.0;
 			    out.println(score + ":" + seconds);
 			} catch (IOException e) {
-			    //exception handling left as an exercise for the reader
+				
 			}
 	}
 
@@ -191,7 +191,7 @@ public class CrackerApplication
 	private File initialiseObjects()
 	{
 		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/encryptedpassage.txt");
+		File cipherFile = new File("resources/340cipherascii.txt");
 		return cipherFile;
 	}
 

@@ -50,6 +50,7 @@ public class CrackerApplication
 		}
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
 		cipherText = calculateFrequency(cipherText);
+		startTime = System.nanoTime();
 		cipherText = initialKey.readInFixedLetterFile(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters);
 		for (CipherSymbol sym : cipherText)
@@ -79,7 +80,7 @@ public class CrackerApplication
 		double bestScore = scoreRunThrough(cipherText);
 		appendScore(bestScore);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 255)
+		while (bestScore < 233)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;

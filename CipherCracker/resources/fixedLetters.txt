@@ -1,6 +1,6 @@
 9 : i
+% : l
 / : k
-Z : e
 U : i
 B : l
 k : i
@@ -9,36 +9,62 @@ R : g
 = : p
 p : e
 X : o
-W : e
 V : b
 + : e
-e : c
 G : a
 Y : u
 F : s
+6 : e
 H : t
 @ : s
-K : s
-! : o
+q : m
+M : h
 J : f
 ^ : n
 I : t
 7 : s
 T : o 
+t : r
+N : e
 Q : f
-D : n
 5 : t
 ) : h
 S : a
 ( : n
 # : k
-f : d
+A : w
 l : a
 E : e
 L : t
 d : o
 r : r
 \ : r
-c : v
-j : x
+8 : a 
+z : d
 _ : y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

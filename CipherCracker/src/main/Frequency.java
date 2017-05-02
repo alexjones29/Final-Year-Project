@@ -12,6 +12,8 @@ import java.util.Random;
 public class Frequency
 {
 	
+	private long seed = 0;
+	private Random rand;
 	/**
 	 * Instantiates a new frequency.
 	 */
@@ -106,12 +108,22 @@ public class Frequency
 	 *            the letters
 	 * @param errorRate
 	 *            the error rate
+	 * @param randomSeed 
 	 * @return the list
 	 */
-	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
+	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate, long randomSeed)
 	{
 		HashMap<Character, Integer> possibleAbove = new HashMap<Character, Integer>();
 		HashMap<Character, Integer> possibleBelow = new HashMap<Character, Integer>();
+		seed = randomSeed;
+		if (seed == 0)
+		{
+			rand = new Random();	 
+		}
+		else 
+		{
+			rand = new Random(seed);
+		}
 		for (Letter letter : letters)
 		{
 			List<Character> multiple = new ArrayList<Character>();
@@ -193,9 +205,8 @@ public class Frequency
 		{
 			return '0';
 		}
-		Random random = new Random();
 		List<Character> keys = new ArrayList<Character>(toSwap.keySet());
-		char randomKey = keys.get(random.nextInt(keys.size()));
+		char randomKey = keys.get(rand.nextInt(keys.size()));
 		return randomKey;
 	}
 
@@ -219,8 +230,7 @@ public class Frequency
 				}
 			}
 		}
-
-		Random rand = new Random();
+		
 		char randomInt = multiple.get(rand.nextInt(multiple.size()));
 		return randomInt;
 	}

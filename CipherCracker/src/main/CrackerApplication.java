@@ -21,13 +21,16 @@ public class CrackerApplication
 
 	private List<Letter> letters = new ArrayList<Letter>();
 	private List<String> cribs = new ArrayList<String>();
-	private CiphertextReader cipherReader;
+	private CiphertextReader cipherReader = new CiphertextReader();
 	private DictionaryHandler dictionary = new DictionaryHandler();
 	private InitialKey initialKey = new InitialKey();
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 	private HashSet<String> fullWords = new HashSet<String>();
 	private long startTime;
+	private double threshold = 175;
+	private long randomSeed = 0;
+	private Random rand;
 
 	/**
 	 * Instantiates a new cracker application.
@@ -38,11 +41,24 @@ public class CrackerApplication
 
 	/**
 	 * Run application.
+	 * @param seed 
+	 * @param givenThreshold 
+	 * @param filename 
 	 */
-	public void runApplication()
+	public void runApplication(String filename, double givenThreshold, long seed)
 	{
 		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
-		File cipherFile = initialiseObjects();
+		File cipherFile = new File("resources/"+filename+".txt");
+		threshold = givenThreshold;
+		if (seed > 0)
+		{
+			randomSeed = seed;
+			rand = new Random(randomSeed);
+		}
+		else 
+		{
+			rand = new Random();
+		}
 		letters = readInLettersAndFrequencies();
 		File crib = new File("resources/cribs.txt");
 		if(crib.exists() && !crib.isDirectory()) { 
@@ -50,7 +66,7 @@ public class CrackerApplication
 		}
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
 		cipherText = calculateFrequency(cipherText);
-		cipherText = initialKey.createInitialKey(cipherText, letters);
+		cipherText = initialKey.createInitialKey(cipherText, letters, randomSeed);
 		startTime = System.nanoTime();
 		cipherText = performHillClimb(cipherText);
 	}
@@ -68,11 +84,11 @@ public class CrackerApplication
 		double bestScore = scoreRunThrough(cipherText);
 		appendScore(bestScore);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 210)
+		while (bestScore < threshold)
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
-			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2);
+			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2, randomSeed);
 			
 			if (newCipherText == null || newCipherText.isEmpty())
 			{
@@ -184,18 +200,6 @@ public class CrackerApplication
 	}
 
 	/**
-	 * Initialise objects.
-	 *
-	 * @return the file
-	 */
-	private File initialiseObjects()
-	{
-		cipherReader = new CiphertextReader();
-		File cipherFile = new File("resources/340cipherascii.txt");
-		return cipherFile;
-	}
-
-	/**
 	 * Read in letters and frequencies.
 	 * 
 	 * @return a list of letters
@@ -280,7 +284,6 @@ public class CrackerApplication
 	 */
 	private int getRandomPosition(List<CipherSymbol> cipherText)
 	{
-		Random rand = new Random();
 		int randomPosition = rand.nextInt(cipherText.size());
 		return randomPosition;
 	}

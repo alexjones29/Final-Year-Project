@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="org.mockito.junit.MockitoJUnitRunner"/>
 <fullyQualifiedTypeName name="org.mockito.Mockito"/>
 <fullyQualifiedTypeName name="java.io.DataInputStream"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="main.HillClimber"/>
 <fullyQualifiedTypeName name="main.Trie"/>
 <fullyQualifiedTypeName name="main.Letter"/>
@@ -33,4 +32,5 @@
 <fullyQualifiedTypeName name="main.DictionaryHandler"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
 </qualifiedTypeNameHistroy>

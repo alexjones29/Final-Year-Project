@@ -6,6 +6,8 @@ import java.util.Random;
 public class InitialKey
 {
 	
+	private Random rand;
+	
 	public InitialKey()
 	{
 		
@@ -16,12 +18,20 @@ public class InitialKey
 	 *
 	 * @param symbols the symbols
 	 * @param letters the letters
+	 * @param randomSeed 
 	 * @return the list
 	 */
-	public List<CipherSymbol> createInitialKey(List<CipherSymbol> symbols, List<Letter> letters)
+	public List<CipherSymbol> createInitialKey(List<CipherSymbol> symbols, List<Letter> letters, long randomSeed)
 	{
 		double[] weight = new double[26];
-		
+		if (randomSeed == 0)
+		{
+			rand = new Random();
+		}
+		else 
+		{
+			rand = new Random(randomSeed);
+		}
 		for (int i=0;i<letters.size();i++)
 		{
 			double temp = letters.get(i).getFrequency();
@@ -74,7 +84,7 @@ public class InitialKey
 	 * @return the double
 	 */
 	private double randUniformPositive() {
-		return new Random().nextDouble();
+		return rand.nextDouble();
 	}
 
 }

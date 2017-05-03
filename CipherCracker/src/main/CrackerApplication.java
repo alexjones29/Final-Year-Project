@@ -28,7 +28,10 @@ public class CrackerApplication
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
 	private HashSet<String> fullWords = new HashSet<String>();
 	private long startTime;
-	
+	private double threshold = 215;
+	private long randomSeed = 0;
+	private Random rand;
+
 	/**
 	 * Instantiates a new cracker application.
 	 */
@@ -38,11 +41,24 @@ public class CrackerApplication
 
 	/**
 	 * Run application.
+	 *
+	 * @param givenThreshold the given threshold
+	 * @param seed the seed
 	 */
-	public void runApplication()
+	public void runApplication(double givenThreshold, long seed)
 	{
 		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 		File cipherFile = initialiseObjects();
+		threshold = givenThreshold;
+		if (seed != 0)
+		{
+			randomSeed = seed;
+			rand = new Random(randomSeed);
+		}
+		else 
+		{
+			rand = new Random();
+		}
 		letters = readInLettersAndFrequencies();
 		File crib = new File("resources/cribs.txt");
 		if(crib.exists() && !crib.isDirectory()) { 
@@ -52,7 +68,7 @@ public class CrackerApplication
 		cipherText = calculateFrequency(cipherText);
 		startTime = System.nanoTime();
 		cipherText = initialKey.readInFixedLetterFile(cipherText);
-		cipherText = initialKey.createInitialKey(cipherText, letters);
+		cipherText = initialKey.createInitialKey(cipherText, letters, randomSeed);
 		for (CipherSymbol sym : cipherText)
 		{
 			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
@@ -80,11 +96,11 @@ public class CrackerApplication
 		double bestScore = scoreRunThrough(cipherText);
 		appendScore(bestScore);
 		List<CipherSymbol> newCipherText = new ArrayList<CipherSymbol>();
-		while (bestScore < 233)
+		while (bestScore < threshold )
 		{
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
-			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2);
+			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2, randomSeed);
 			
 			if (newCipherText == null || newCipherText.isEmpty())
 			{
@@ -118,6 +134,11 @@ public class CrackerApplication
 		return cipherText;
 	}
 	
+	/**
+	 * Append score.
+	 *
+	 * @param score the score
+	 */
 	public void appendScore(double score)
 	{
 		try(FileWriter fw = new FileWriter("resources/scores.txt", true);
@@ -129,7 +150,6 @@ public class CrackerApplication
 				double seconds = (double)elapsed / 1000000000.0;
 			    out.println(score + ":" + seconds);
 			} catch (IOException e) {
-			    //exception handling left as an exercise for the reader
 			}
 	}
 
@@ -306,7 +326,6 @@ public class CrackerApplication
 	 */
 	private int getRandomPosition(List<CipherSymbol> cipherText)
 	{
-		Random rand = new Random();
 		int randomPosition = rand.nextInt(cipherText.size());
 		return randomPosition;
 	}

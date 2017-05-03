@@ -101,7 +101,7 @@ public class InitialKeyTest
 	{
 		InitialKey key = new InitialKey();
 		
-		ciphertext = key.createInitialKey(ciphertext, letters);
+		ciphertext = key.createInitialKey(ciphertext, letters, 0);
 		
 	}
 	

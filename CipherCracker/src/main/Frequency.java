@@ -12,6 +12,9 @@ import java.util.Random;
 public class Frequency
 {
 	
+	private long seed = 0;
+	private Random rand;
+	
 	/**
 	 * Instantiates a new frequency.
 	 */
@@ -100,18 +103,25 @@ public class Frequency
 	 * 
 	 * If there is no appropriate swap then returns null
 	 *
-	 * @param ciphertext
-	 *            the ciphertext
-	 * @param letters
-	 *            the letters
-	 * @param errorRate
-	 *            the error rate
+	 * @param ciphertext            the ciphertext
+	 * @param letters            the letters
+	 * @param errorRate            the error rate
+	 * @param randomSeed the random seed
 	 * @return the list
 	 */
-	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate)
+	public List<CipherSymbol> findSwappableNodes(List<CipherSymbol> ciphertext, List<Letter> letters, double errorRate, long randomSeed)
 	{
 		HashMap<Character, Integer> possibleAbove = new HashMap<Character, Integer>();
 		HashMap<Character, Integer> possibleBelow = new HashMap<Character, Integer>();
+		seed = randomSeed;
+		if (seed == 0)
+		{
+			rand = new Random();	 
+		}
+		else 
+		{
+			rand = new Random(seed);
+		}
 		for (Letter letter : letters)
 		{
 			List<Character> multiple = new ArrayList<Character>();
@@ -191,6 +201,13 @@ public class Frequency
 		return ciphertext;
 	}
 	
+	/**
+	 * Check if the symbol has a hardcoded plaintext letter.
+	 *
+	 * @param ciphertext the ciphertext
+	 * @param toSwap the to swap
+	 * @return true, if successful
+	 */
 	private boolean checkIfFixed(List<CipherSymbol> ciphertext, char toSwap)
 	{
 		for (CipherSymbol symbol : ciphertext)
@@ -218,9 +235,8 @@ public class Frequency
 		{
 			return '0';
 		}
-		Random random = new Random();
 		List<Character> keys = new ArrayList<Character>(toSwap.keySet());
-		char randomKey = keys.get(random.nextInt(keys.size()));
+		char randomKey = keys.get(rand.nextInt(keys.size()));
 		return randomKey;
 	}
 
@@ -249,7 +265,6 @@ public class Frequency
 		{
 			return '0';
 		}
-		Random rand = new Random();
 		char randomInt = multiple.get(rand.nextInt(multiple.size()));
 		return randomInt;
 	}

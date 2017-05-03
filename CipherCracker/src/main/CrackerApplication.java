@@ -50,7 +50,7 @@ public class CrackerApplication
 		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
 		File cipherFile = new File("resources/"+filename+".txt");
 		threshold = givenThreshold;
-		if (seed > 0)
+		if (seed != 0)
 		{
 			randomSeed = seed;
 			rand = new Random(randomSeed);
@@ -143,6 +143,11 @@ public class CrackerApplication
 		}
 	}
 	
+	/**
+	 * Append score.
+	 *
+	 * @param score the score
+	 */
 	public void appendScore(double score)
 	{
 		try(FileWriter fw = new FileWriter("resources/scores.txt", true);

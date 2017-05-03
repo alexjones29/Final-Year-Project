@@ -3,6 +3,9 @@ package main;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The Class InitialKey.
+ */
 public class InitialKey
 {
 	
@@ -18,7 +21,7 @@ public class InitialKey
 	 *
 	 * @param symbols the symbols
 	 * @param letters the letters
-	 * @param randomSeed 
+	 * @param randomSeed the random seed
 	 * @return the list
 	 */
 	public List<CipherSymbol> createInitialKey(List<CipherSymbol> symbols, List<Letter> letters, long randomSeed)

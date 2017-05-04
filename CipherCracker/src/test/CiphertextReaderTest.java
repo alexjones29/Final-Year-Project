@@ -28,7 +28,7 @@ public class CiphertextReaderTest
 	 */
 	public void givenFile()
 	{
-		testFile = new File("resources/340cipherascii.txt");
+		testFile = new File("resources/340.txt");
 	}
 	
 	/**

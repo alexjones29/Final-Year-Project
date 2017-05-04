@@ -20657,3 +20657,53 @@ Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to tra
 2017-05-03 14:17:13,531 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\Final-Year-Project\CipherCracker\src\main\resources
 2017-05-03 14:17:13,533 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2017-05-03 14:17:13,541 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory M:\Third Year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 14:49:09,833 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mmp.CipherCracker:CipherCracker:0.0.1-SNAPSHOT @ D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\pom.xml.
+2017-05-04 14:49:11,046 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:11,051 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 14:49:11,052 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:11,056 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 14:49:13,264 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:13,268 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 14:49:13,269 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:13,274 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 14:49:20,574 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-05-04 14:49:20,976 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mmp.CipherCracker:CipherCracker:0.0.1-SNAPSHOT @ D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\pom.xml.
+2017-05-04 14:49:21,176 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /CipherCracker/src
+2017-05-04 14:49:21,176 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /CipherCracker/src/test/java because it overlaps with /CipherCracker/src
+2017-05-04 14:49:21,232 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2017-05-04 14:49:21,589 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:21,595 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 14:49:21,597 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 14:49:21,604 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 14:50:17,619 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2017-05-04 18:11:13,816 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2017-05-04 18:11:29,717 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:11:29,723 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:11:29,725 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:11:29,729 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 18:25:40,427 [Worker-15] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/1.0/maven-jar-plugin-1.0.jar
+2017-05-04 18:25:40,768 [Worker-15] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mmp.CipherCracker:CipherCracker:0.0.1-SNAPSHOT @ D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\pom.xml.
+2017-05-04 18:25:41,001 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:25:41,005 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:25:41,006 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:25:41,011 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 18:30:01,611 [Worker-18] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker
+2017-05-04 18:30:01,611 [Worker-18] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B install
+2017-05-04 18:30:02,955 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:30:02,959 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:30:02,960 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:30:02,964 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 18:31:11,687 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mmp.CipherCracker:CipherCracker:0.0.1-SNAPSHOT @ D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\pom.xml.
+2017-05-04 18:31:11,894 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:31:11,898 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:31:11,899 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:31:11,903 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 18:46:10,421 [Worker-26] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mmp.CipherCracker:CipherCracker:0.0.1-SNAPSHOT @ D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\pom.xml.
+2017-05-04 18:46:10,609 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:46:10,613 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:46:10,614 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:46:10,618 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources
+2017-05-04 18:46:23,555 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:46:23,561 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\main\resources
+2017-05-04 18:46:23,562 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-05-04 18:46:23,569 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Uni\Third year\MMP\Final-Year-Project\CipherCracker\src\test\resources

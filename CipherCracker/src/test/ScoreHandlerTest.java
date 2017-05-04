@@ -1,13 +1,15 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
-
+import static org.junit.Assert.assertEquals;
 import main.ScoreHandler;
 
 /**
@@ -22,9 +24,11 @@ public class ScoreHandlerTest
 
 	private HashMap<String, Double> bigrams = new HashMap<String, Double>();
 	private HashMap<String, Double> trigrams = new HashMap<String, Double>();
-	private char twoPrevious = '0';
-	private char previous = '0';
-	private char current = '0';
+	private HashSet<String> dictionary = new HashSet<String>();
+	private boolean consecutive = false;
+	private double score = 0;
+	private ArrayList<Character> previousCharacters = new ArrayList<Character>();
+	private String formatted;
 
 	/**
 	 * Setup.
@@ -36,40 +40,107 @@ public class ScoreHandlerTest
 		bigrams.put("th", 0.3);
 		bigrams.put("er", 0.4);
 		bigrams.put("om", 0.33);
-
+		bigrams.put("ls", 0.5);
+		
 		trigrams.put("the", 1.3);
+		trigrams.put("tle", 1.5);
 		trigrams.put("com", 0.05);
 		trigrams.put("tra", 2.5);
 		trigrams.put("fab", 0.78);
-	}
+		
+		dictionary.add("example");
+		dictionary.add("an");
+		dictionary.add("words");
+		dictionary.add("computer");
+		dictionary.add("desk");
+		dictionary.add("bike");
+		dictionary.add("rattle");
 
+		previousCharacters.add('r');
+		previousCharacters.add('a');
+		previousCharacters.add('t');
+		previousCharacters.add('t');
+		previousCharacters.add('l');
+	}
+	
 	/**
-	 * Given characters.
+	 * When consecutive letters is called with a word.
 	 *
-	 * @param a
-	 *            the a
-	 * @param b
-	 *            the b
-	 * @param c
-	 *            the c
+	 * @param word the word
 	 */
-	public void givenCharacters(char a, char b, char c)
+	public void whenConsecutiveLettersIsCalled(String word)
 	{
-		twoPrevious = a;
-		previous = b;
-		current = c;
+		consecutive = scoreHandler.consecutiveLetters(word);
+	}
+	
+	public void whenCalculateScoreIsCalled(char currentChar)
+	{
+		score = scoreHandler.calculateScore(currentChar, previousCharacters, bigrams, trigrams, dictionary);
+	}
+	
+	/**
+	 * When format string is called.
+	 *
+	 * @param current the current
+	 * @param length the length
+	 */
+	public void whenFormatStringIsCalled(char current, int length)
+	{
+		formatted = scoreHandler.formatString(previousCharacters, current, length);
+	}
+	
+	
+	/**
+	 * When search is called.
+	 *
+	 * @param word the word
+	 */
+	public void whenSearchIsCalled(String word)
+	{
+		score += scoreHandler.search(word, dictionary);
+	}
+	
+	/**
+	 * Then the list is formatted correctly.
+	 *
+	 * @param expected the expected
+	 * @param expectedLength the expected length
+	 */
+	public void thenTheListIsFormattedCorrectly(String expected, int expectedLength)
+	{
+		assertEquals(expected, formatted);
+		assertEquals(expectedLength, formatted.length());
+	}
+	
+	/**
+	 * Then search returns the correct score.
+	 *
+	 * @param expected the expected
+	 */
+	public void thenTheCorrectScoreIsReturned(double expected)
+	{
+		assertEquals(expected, score, 0);
+	}
+	
+	
+	/**
+	 * Then consecutive returns.
+	 *
+	 * @param expected the expected
+	 */
+	public void thenConsecutiveReturns(boolean expected)
+	{
+		assertEquals(expected, consecutive);
 	}
 
 	/**
 	 * Then calculate score is called with bigram.
 	 *
-	 * @param expected
-	 *            the expected
+	 * @param input the input
 	 */
-	public void thenCalculateScoreIsCalledWithBigram(double expected)
+	public void whenMapSearchIsCalledWithBigram(String input)
 	{
-//		double score = scoreHandler.calculateScore(previous, current, bigrams, trie);
-//		assertEquals(expected, score, 0);
+		score += scoreHandler.mapSearch(bigrams, input);
 	}
 
 	/**
@@ -78,79 +149,184 @@ public class ScoreHandlerTest
 	 * @param expected
 	 *            the expected
 	 */
-	public void thenCalculateScoreIsCalledWithTrigram(double expected)
+	public void whenMapSearchIsCalledWithTrigram(String input)
 	{
-//		double score = scoreHandler.calculateScore(twoPrevious, previous, current, bigrams, trigrams, trie);
-//		assertEquals(expected, score, 0);
+		score += scoreHandler.mapSearch(trigrams, input);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * in the bigram.
 	 */
 	@Test
 	public void testCharactersInBigrams()
 	{
-		givenCharacters('c', 'o', 'm');
-		thenCalculateScoreIsCalledWithBigram(2 * 0.33);
+		whenMapSearchIsCalledWithBigram("om");
+		thenTheCorrectScoreIsReturned(2*0.33);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * not in the bigram.
 	 */
 	@Test
 	public void testCharactersNotInBigram()
 	{
-		givenCharacters('e', 'a', 'r');
-		thenCalculateScoreIsCalledWithBigram(0);
+		whenMapSearchIsCalledWithBigram("ar");
+		thenTheCorrectScoreIsReturned(0);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * in the trigram and bigram.
 	 */
 	@Test
 	public void testCharactersInTrigramAndBigram()
 	{
-		givenCharacters('f', 'a', 'b');
 		double expected = (2 * 0.2) + (3 * 0.78);
-		thenCalculateScoreIsCalledWithTrigram(expected);
+		whenMapSearchIsCalledWithBigram("ab");
+		whenMapSearchIsCalledWithTrigram("fab");
+		thenTheCorrectScoreIsReturned(expected);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * in the trigram but not the bigram.
 	 */
 	@Test
 	public void testCharactersInTrigramButNotBigram()
 	{
-		givenCharacters('t', 'r', 'a');
 		double expected = 3 * 2.5;
-		thenCalculateScoreIsCalledWithTrigram(expected);
+		whenMapSearchIsCalledWithBigram("ra");
+		whenMapSearchIsCalledWithTrigram("tra");
+		thenTheCorrectScoreIsReturned(expected);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * in the bigram but not the trigram.
 	 */
 	@Test
 	public void testCharactersInBigramButNotTrigram()
 	{
-		givenCharacters('e', 'e', 'r');
 		double expected = 2 * 0.4;
-		thenCalculateScoreIsCalledWithTrigram(expected);
+		whenMapSearchIsCalledWithBigram("er");
+		whenMapSearchIsCalledWithTrigram("eer");	
+		thenTheCorrectScoreIsReturned(expected);
 	}
 
 	/**
-	 * Test calculateScore and mapSearch works correctly when the characters are
+	 * Test mapSearch works correctly when the characters are
 	 * in neither the bigram nor the trigram.
 	 */
 	@Test
 	public void testCharactersInNeitherMap()
 	{
-		givenCharacters('a', 'l', 'x');
-		thenCalculateScoreIsCalledWithTrigram(0);
+		whenMapSearchIsCalledWithBigram("lx");
+		whenMapSearchIsCalledWithTrigram("alx");	
+		thenTheCorrectScoreIsReturned(0);
+	}
+	
+	/**
+	 * Test consecutive letters returns true when consecutive.
+	 */
+	@Test
+	public void testConsecutiveLettersReturnsTrueWhenConsecutive()
+	{
+		whenConsecutiveLettersIsCalled("testtt");
+		thenConsecutiveReturns(true);
+	}
+	
+	/**
+	 * Test consecutive letters returns false when not consecutive.
+	 */
+	@Test
+	public void testConsecutiveLettersReturnsFalseWhenNotConsecutive()
+	{
+		whenConsecutiveLettersIsCalled("test");
+		thenConsecutiveReturns(false);
+	}
+	
+	/**
+	 * Test consecutive letters returns true when word length is one.
+	 */
+	@Test
+	public void testConsecutiveLettersReturnsTrueWhenWordLengthIsOne()
+	{
+		whenConsecutiveLettersIsCalled("t");
+		thenConsecutiveReturns(true);
+	}
+	
+	/**
+	 * Test search returns correct score when word found amongst a string.
+	 */
+	@Test
+	public void testSearchReturnsCorrectScoreWhenWordFoundInString()
+	{
+		whenSearchIsCalled("spexample");
+		thenTheCorrectScoreIsReturned(7);
+	}
+	
+	/**
+	 * Test search returns correct score when word found.
+	 */
+	@Test
+	public void testSearchReturnsCorrectScoreWhenWordFound()
+	{
+		whenSearchIsCalled("bike");
+		thenTheCorrectScoreIsReturned(4);
+	}
+	
+	/**
+	 * Test search returns correct score when word not found.
+	 */
+	@Test
+	public void testSearchReturnsCorrectScoreWhenWordNotFound()
+	{
+		whenSearchIsCalled("call");
+		thenTheCorrectScoreIsReturned(0);
+	}
+	
+	/**
+	 * Test format string returns formatted string.
+	 */
+	@Test 
+	public void testFormatStringReturnsFormattedString()
+	{
+		whenFormatStringIsCalled('e', 5);
+		thenTheListIsFormattedCorrectly("rattle", 6);
+	}
+	
+	/**
+	 * Test format string returns formatted string with shorter length.
+	 */
+	@Test 
+	public void testFormatStringReturnsFormattedStringWithShorterLength()
+	{
+		whenFormatStringIsCalled('d', 2);
+		thenTheListIsFormattedCorrectly("tld", 3);
+	}
+	
+	/**
+	 * Test calculate score returns correct score with word found.
+	 */
+	@Test
+	public void testCalculateScoreReturnsCorrectScoreWithWordFound()
+	{
+		double expectedScore = (3 * 1.5) + 6;
+		whenCalculateScoreIsCalled('e');
+		thenTheCorrectScoreIsReturned(expectedScore);
+	}
+	
+	/**
+	 * Test calculate score returns correct score with word not found.
+	 */
+	@Test
+	public void testCalculateScoreReturnsCorrectScoreWithWordNotFound()
+	{
+		double expectedScore = 2 * 0.5;
+		whenCalculateScoreIsCalled('s');
+		thenTheCorrectScoreIsReturned(expectedScore);
 	}
 
 }

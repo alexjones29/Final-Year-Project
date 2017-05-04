@@ -22,6 +22,7 @@ import main.Letter;
 public class InitialKeyTest
 {
 	
+
 	List<CipherSymbol> ciphertext = new ArrayList<CipherSymbol>();
 	List<Letter> letters = new ArrayList<Letter>();
 	
@@ -101,7 +102,7 @@ public class InitialKeyTest
 	{
 		InitialKey key = new InitialKey();
 		
-		ciphertext = key.createInitialKey(ciphertext, letters, 0);
+		ciphertext = key.createInitialKey(ciphertext, letters,0);
 		
 	}
 	
@@ -117,7 +118,7 @@ public class InitialKeyTest
 		}
 		
 		assertEquals(ciphertext.get(0).getPlaintextValue(),ciphertext.get(1).getPlaintextValue());
-		assertEquals(ciphertext.get(4).getPlaintextValue(),ciphertext.get(8).getPlaintextValue());
+		assertEquals(ciphertext.get(3).getPlaintextValue(),ciphertext.get(7).getPlaintextValue());
 	}
 	
 	/**
@@ -130,5 +131,4 @@ public class InitialKeyTest
 		whenCreateInitialKeyIsCalled();
 		thenSymbolsAreAssignedLetters();
 	}
-
 }

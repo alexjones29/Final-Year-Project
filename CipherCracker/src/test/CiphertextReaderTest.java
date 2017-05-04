@@ -19,6 +19,7 @@ import main.CiphertextReader;
 public class CiphertextReaderTest
 {
 	
+	
 	private CiphertextReader reader = new CiphertextReader();
 	private File testFile;
 	private List<CipherSymbol> text = new ArrayList<CipherSymbol>();
@@ -28,7 +29,7 @@ public class CiphertextReaderTest
 	 */
 	public void givenFile()
 	{
-		testFile = new File("resources/340cipherascii.txt");
+		testFile = new File("resources/408cipher.txt");
 	}
 	
 	/**

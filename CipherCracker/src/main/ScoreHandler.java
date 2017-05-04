@@ -86,7 +86,7 @@ public class ScoreHandler
 	 *            the length
 	 * @return the string
 	 */
-	private String formatString(ArrayList<Character> previousCharacters, char current, int length)
+	public String formatString(ArrayList<Character> previousCharacters, char current, int length)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
 		int start = previousCharacters.size() - length;
@@ -105,7 +105,7 @@ public class ScoreHandler
 	 *            the word
 	 * @return true, if there are consecutive letters
 	 */
-	private boolean consecutiveLetters(String word)
+	public boolean consecutiveLetters(String word)
 	{
 		if (word.length() == 1)
 		{

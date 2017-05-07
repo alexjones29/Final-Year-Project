@@ -60,6 +60,7 @@ public class CrackerApplication
 			rand = new Random();
 		}
 		letters = readInLettersAndFrequencies();
+		System.out.println("Trying to crack cipher...");
 		File crib = new File("resources/cribs.txt");
 		if(crib.exists() && !crib.isDirectory()) { 
 			cribs = dictionary.readInCrib(crib);
@@ -69,18 +70,9 @@ public class CrackerApplication
 		startTime = System.nanoTime();
 		cipherText = initialKey.readInFixedLetterFile(cipherText);
 		cipherText = initialKey.createInitialKey(cipherText, letters, randomSeed);
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getSymbolValue() + " : " + sym.getPlaintextValue());
-		}
 		cipherText = performHillClimb(cipherText);
-		
-		System.out.println("DONE");
-		System.out.println("==================");
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getPlaintextValue());
-		}
+		System.out.println("Finished deciphering");
+		System.out.println("Refer to scores file and attempts directory for results");
 	}
 
 	/**
@@ -114,10 +106,6 @@ public class CrackerApplication
 				bestScore = score;
 				appendScore(bestScore);
 				consecutive = 0;
-				for (CipherSymbol sym : cipherText)
-				{
-					System.out.println(sym.getPlaintextValue());
-				}
 			} else
 			{
 				consecutive++;
@@ -308,13 +296,6 @@ public class CrackerApplication
 		cipherText.get(randomPosition).setPlaintextValue(currentBestLetter);
 
 		cipherText = setSameSymbols(randomPosition, currentBestLetter, currentBestScore, cipherText);
-		System.out.println("round 2");
-
-		for (CipherSymbol sym : cipherText)
-		{
-			System.out.println(sym.getPlaintextValue());
-		}
-
 		return cipherText;
 	}
 

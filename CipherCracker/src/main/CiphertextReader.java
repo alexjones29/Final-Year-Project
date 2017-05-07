@@ -20,7 +20,8 @@ public class CiphertextReader
 	/**
 	 * Read in cipher text and store in an arraylist to return to the main
 	 * application.
-	 *
+	 * 
+	 * @param file 
 	 * @return the list
 	 */
 	public List<CipherSymbol> readInCipherText(File file)

@@ -41,27 +41,29 @@ public class CrackerApplication
 
 	/**
 	 * Run application.
-	 * @param seed 
-	 * @param givenThreshold 
-	 * @param filename 
+	 * 
+	 * @param seed
+	 * @param givenThreshold
+	 * @param filename
 	 */
 	public void runApplication(String filename, double givenThreshold, long seed)
 	{
 		List<CipherSymbol> cipherText = new ArrayList<CipherSymbol>();
-		File cipherFile = new File("resources/"+filename+".txt");
+		File cipherFile = new File("resources/" + filename + ".txt");
 		threshold = givenThreshold;
 		if (seed != 0)
 		{
 			randomSeed = seed;
 			rand = new Random(randomSeed);
-		}
-		else 
+		} else
 		{
 			rand = new Random();
 		}
 		letters = readInLettersAndFrequencies();
+		System.out.println("Trying to crack cipher...");
 		File crib = new File("resources/cribs.txt");
-		if(crib.exists() && !crib.isDirectory()) { 
+		if (crib.exists() && !crib.isDirectory())
+		{
 			cribs = dictionary.readInCrib(crib);
 		}
 		cipherText = readInCiphertextAndDictionary(cipherFile, cipherText);
@@ -69,12 +71,14 @@ public class CrackerApplication
 		cipherText = initialKey.createInitialKey(cipherText, letters, randomSeed);
 		startTime = System.nanoTime();
 		cipherText = performHillClimb(cipherText);
+		System.out.println("Finished deciphering");
 	}
 
 	/**
 	 * Performs the main hill climb.
 	 *
-	 * @param cipherText the cipher text
+	 * @param cipherText
+	 *            the cipher text
 	 * @return the list
 	 */
 	private List<CipherSymbol> performHillClimb(List<CipherSymbol> cipherText)
@@ -89,12 +93,12 @@ public class CrackerApplication
 			cipherText = calculatePlaintextFrequency(cipherText);
 			newCipherText = cipherText;
 			newCipherText = freq.findSwappableNodes(newCipherText, letters, 2, randomSeed);
-			
+
 			if (newCipherText == null || newCipherText.isEmpty())
 			{
 				newCipherText = assignBestLetter(cipherText);
-			} 
-			
+			}
+
 			double score = scoreRunThrough(newCipherText);
 			if (score > bestScore)
 			{
@@ -113,11 +117,7 @@ public class CrackerApplication
 					appendScore(bestScore);
 				}
 			}
-			
-			for (CipherSymbol ciph : cipherText)
-			{
-				System.out.println(ciph.getPlaintextValue());
-			}
+
 		}
 		printOutText(cipherText, bestScore);
 		return cipherText;
@@ -126,14 +126,16 @@ public class CrackerApplication
 	/**
 	 * Prints out the best plaintext attempt.
 	 *
-	 * @param cipherText the cipher text
-	 * @param bestScore the best score
+	 * @param cipherText
+	 *            the cipher text
+	 * @param bestScore
+	 *            the best score
 	 */
 	private void printOutText(List<CipherSymbol> cipherText, double bestScore)
 	{
 		try
 		{
-			PrintWriter out = new PrintWriter("resources/attempts/" +bestScore+"attempt.txt");
+			PrintWriter out = new PrintWriter("resources/attempts/" + bestScore + "attempt.txt");
 			String text = convertListToString(cipherText);
 			out.println(text);
 			out.close();
@@ -142,37 +144,40 @@ public class CrackerApplication
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Append score.
 	 *
-	 * @param score the score
+	 * @param score
+	 *            the score
 	 */
 	public void appendScore(double score)
 	{
-		try(FileWriter fw = new FileWriter("resources/scores.txt", true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw))
-			{
-				long currentTime = System.nanoTime();
-				long elapsed = currentTime - startTime;
-				double seconds = (double)elapsed / 1000000000.0;
-			    out.println(score + ":" + seconds);
-			} catch (IOException e) {
-				
-			}
+		try (FileWriter fw = new FileWriter("resources/scores.txt", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw))
+		{
+			long currentTime = System.nanoTime();
+			long elapsed = currentTime - startTime;
+			double seconds = (double) elapsed / 1000000000.0;
+			out.println(score + ":" + seconds);
+		} catch (IOException e)
+		{
+
+		}
 	}
 
 	/**
 	 * Converts a given list to a string.
 	 *
-	 * @param cipherText the cipher text
+	 * @param cipherText
+	 *            the cipher text
 	 * @return the string
 	 */
 	private String convertListToString(List<CipherSymbol> cipherText)
 	{
 		StringBuilder text = new StringBuilder();
-		for (CipherSymbol symbol: cipherText)
+		for (CipherSymbol symbol : cipherText)
 		{
 			text.append(symbol.getPlaintextValue());
 		}
@@ -182,15 +187,17 @@ public class CrackerApplication
 	/**
 	 * Random restart.
 	 *
-	 * @param cipherText the cipher text
-	 * @param bestScore the best score
+	 * @param cipherText
+	 *            the cipher text
+	 * @param bestScore
+	 *            the best score
 	 * @return the list
 	 */
 	private List<CipherSymbol> randomRestart(List<CipherSymbol> cipherText, double bestScore)
 	{
 		List<CipherSymbol> text = cipherText;
 		double score = 0;
-		for (int i = 0; i<100; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			text = assignBestLetter(text);
 			score = scoreRunThrough(cipherText);
@@ -199,7 +206,7 @@ public class CrackerApplication
 			{
 				return text;
 			}
-			
+
 		}
 		return text;
 	}
@@ -233,7 +240,8 @@ public class CrackerApplication
 	}
 
 	/**
-	 * This method looks at a random position in the cipher text and assigns a letter to that symbol based on its previous letters and score.
+	 * This method looks at a random position in the cipher text and assigns a
+	 * letter to that symbol based on its previous letters and score.
 	 */
 	public List<CipherSymbol> assignBestLetter(List<CipherSymbol> cipherText)
 	{
@@ -284,7 +292,8 @@ public class CrackerApplication
 	/**
 	 * Gets the random position.
 	 *
-	 * @param cipherText the cipher text
+	 * @param cipherText
+	 *            the cipher text
 	 * @return the random position
 	 */
 	private int getRandomPosition(List<CipherSymbol> cipherText)
@@ -296,9 +305,12 @@ public class CrackerApplication
 	/**
 	 * Returns the specified amount of previous letters.
 	 *
-	 * @param symbols the symbols
-	 * @param position the position
-	 * @param amount the amount
+	 * @param symbols
+	 *            the symbols
+	 * @param position
+	 *            the position
+	 * @param amount
+	 *            the amount
 	 * @return the array list
 	 */
 	private ArrayList<Character> previousLetters(List<CipherSymbol> symbols, int position, int amount)
@@ -374,7 +386,8 @@ public class CrackerApplication
 	/**
 	 * Scores the hill climb run through.
 	 *
-	 * @param cipherText the cipher text
+	 * @param cipherText
+	 *            the cipher text
 	 * @return the score
 	 */
 	private double scoreRunThrough(List<CipherSymbol> cipherText)
@@ -398,11 +411,11 @@ public class CrackerApplication
 				}
 			}
 		}
-		for (String crib: cribs)
+		for (String crib : cribs)
 		{
 			if (fullText.contains(crib))
 			{
-				score+=40;
+				score += 40;
 			}
 		}
 

@@ -72,6 +72,7 @@ public class CrackerApplication
 		startTime = System.nanoTime();
 		cipherText = performHillClimb(cipherText);
 		System.out.println("Finished deciphering");
+		System.out.println("Refer to scores file and attempts directory for results");
 	}
 
 	/**

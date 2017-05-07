@@ -20,6 +20,8 @@ public class RunApplication
 					"Usage: java CipherCracker.jar filename scoreThreshold seed(optional)\n" +
 					"-------------------------------------------------------------------------");
 		}
+		else 
+		{
 		String filename = args[0];
 		double threshold = Double.valueOf(args[1]);
 		long seed = 0;
@@ -30,6 +32,7 @@ public class RunApplication
 		
 		CrackerApplication app = new CrackerApplication();
 		app.runApplication(filename, threshold, seed);
+		}
 	}
 
 }
